@@ -6,7 +6,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class Speler extends Persoon {
-    private int rating;
+    private double rating;
     private double gewonnen_geld;
     
 
@@ -35,7 +35,7 @@ public String[] geefKolomNamen()
      return kolomnamen;
 
 }
-public void setRating(int r)
+public void setRating(double r)
 {
     this.rating=r;
 }
@@ -44,6 +44,14 @@ public void setGewonnenGeld(double gg)
     this.gewonnen_geld=gg;
 }
 
+public double getRating()
+{
+    return rating;
+}
+public double getGeld()
+{
+    return gewonnen_geld;
+}
 
 @Override
 public String toString(){

@@ -527,6 +527,11 @@ public class GUI extends javax.swing.JFrame {
                 lijstSpelersMouseClicked(evt);
             }
         });
+        lijstSpelers.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lijstSpelersValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(lijstSpelers);
 
         jLabel1.setText("Voornaam");
@@ -796,23 +801,23 @@ public class GUI extends javax.swing.JFrame {
         }//GEN-LAST:event_spelerSchrijfButtonActionPerformed
 
         private void spelerAchternaamFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerAchternaamFieldActionPerformed
-                // TODO add your handling code here:
+              
         }//GEN-LAST:event_spelerAchternaamFieldActionPerformed
 
         private void spelerNummerFIeldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerNummerFIeldActionPerformed
-                // TODO add your handling code here:
+              
         }//GEN-LAST:event_spelerNummerFIeldActionPerformed
 
         private void spelerPlaatsFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerPlaatsFieldActionPerformed
-                // TODO add your handling code here:
+               
         }//GEN-LAST:event_spelerPlaatsFieldActionPerformed
 
         private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-                // TODO add your handling code here:
+              
         }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-        // TODO add your handling code here:
+    
     }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void spelerVoegButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerVoegButtonActionPerformed
@@ -822,6 +827,30 @@ public class GUI extends javax.swing.JFrame {
     private void spelerWijzigButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerWijzigButtonActionPerformed
         wijzigenSpeler();
     }//GEN-LAST:event_spelerWijzigButtonActionPerformed
+
+    private void lijstSpelersValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lijstSpelersValueChanged
+           
+           Speler selectedSpeler= (Speler) lijstSpelers.getSelectedValue(); 
+           StringBuilder sb= new StringBuilder();
+           sb.append(selectedSpeler.getRating());
+           String rating=sb.toString();
+           StringBuilder sb2= new StringBuilder();
+           sb2.append(selectedSpeler.getGeld());
+           String gg=sb2.toString();
+           spelerVoornaamField.setText(selectedSpeler.getVoornaam());
+           spelerTussenField.setText(selectedSpeler.getTussenvoegsel());
+           spelerAchternaamField.setText(selectedSpeler.getAchternaam());
+           spelerStraatField.setText(selectedSpeler.getStraat());
+           spelerNummerFIeld.setText(selectedSpeler.getHuisnummer());
+           spelerPlaatsField.setText(selectedSpeler.getWoonplaats());
+           spelerPostcodeField.setText(selectedSpeler.getPostcode());
+           spelerTelThuisField.setText(selectedSpeler.getVNR());
+           spelerThuisMobielField.setText(selectedSpeler.getMNR());
+           spelerEmailField.setText(selectedSpeler.getEmail());
+           
+           spelerRatingField.setText(rating);
+           gewonnengeld.setText(gg);
+    }//GEN-LAST:event_lijstSpelersValueChanged
 private void wijzigenSpeler()
    {
        try{
@@ -849,7 +878,7 @@ private void wijzigenSpeler()
           int effectedRecords2=stat2.executeUpdate();
           
           System.out.println("Aantal gewijzigde records in persoon: " + effectedRecords);
-           System.out.println("Aantal gewijzigde records in speler:" + effectedRecords2);
+          System.out.println("Aantal gewijzigde records in speler:" + effectedRecords2);
        }
           catch(Exception e)
                   {
@@ -869,6 +898,10 @@ private void wijzigenSpeler()
           ResultSet result=stat.executeQuery(query);
           DefaultListModel dm= new DefaultListModel();
           System.out.println(query);
+          
+          Speler nieuwSpeler=new Speler();
+          nieuwSpeler.setNaam("--Nieuwe speler--", "", "");
+          dm.addElement(nieuwSpeler);
           while (result.next())
           {
    
@@ -877,6 +910,8 @@ private void wijzigenSpeler()
               speler.setNaam(result.getString("voornaam"), result.getString("tussenvoegsel"), result.getString("achternaam"));
               speler.setAdres(result.getString("straat"), result.getString("huisnummer"),result.getString("woonplaats"), result.getString("postcode"));
               speler.setContactGegevens(result.getString("mobiel_nr"), result.getString("vast_nr"), result.getString("emailadres"));
+              speler.setRating(result.getDouble("rating"));
+              speler.setGewonnenGeld(result.getDouble("gewonnen_geld"));
               dm.addElement(speler);
               
           }
