@@ -835,8 +835,9 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_spelerWijzigButtonActionPerformed
 
     private void lijstSpelersValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lijstSpelersValueChanged
-        Speler selectedSpeler= (Speler)lijstSpelers.getSelectedValue();   
-        if(lijstSpelers.getSelectedIndex()==0 ||selectedSpeler==null)
+         
+        
+        if(lijstSpelers.getSelectedIndex()==0 )
            {
            spelerWijzigButton.setEnabled(false);
            spelerVoegButton.setEnabled(true);
@@ -845,6 +846,7 @@ public class GUI extends javax.swing.JFrame {
            reset();
            }
            else{
+            Speler selectedSpeler= (Speler)lijstSpelers.getSelectedValue(); 
            spelerWijzigButton.setEnabled(true);
            spelerVoegButton.setEnabled(false);
            spelerSchrijfButton.setEnabled(true);
@@ -934,7 +936,7 @@ public class GUI extends javax.swing.JFrame {
             reset();
          }
          
-         catch(Exception e)
+         catch(SQLException e)
          {
              System.out.println(e);
          }
