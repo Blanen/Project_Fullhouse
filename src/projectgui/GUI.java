@@ -6,6 +6,7 @@
 
 package projectgui;
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,6 +28,11 @@ public class GUI extends javax.swing.JFrame {
 	buttonGroup1.add(spelerToernooiButton);
 	buttonGroup1.add(spelerMasterclassButton);
         showLijstSpelers();
+        
+        
+        spelerWijzigButton.setEnabled(false);
+       
+       
     }
 
     /**
@@ -821,7 +827,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void spelerVoegButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerVoegButtonActionPerformed
-         
+        toevoegenSpeler();   
     }//GEN-LAST:event_spelerVoegButtonActionPerformed
 
     private void spelerWijzigButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerWijzigButtonActionPerformed
@@ -829,14 +835,27 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_spelerWijzigButtonActionPerformed
 
     private void lijstSpelersValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lijstSpelersValueChanged
+        Speler selectedSpeler= (Speler)lijstSpelers.getSelectedValue();   
+        if(lijstSpelers.getSelectedIndex()==0 ||selectedSpeler==null)
+           {
+           spelerWijzigButton.setEnabled(false);
+           spelerVoegButton.setEnabled(true);
+           spelerSchrijfButton.setEnabled(true);
            
-           Speler selectedSpeler= (Speler) lijstSpelers.getSelectedValue(); 
+           reset();
+           }
+           else{
+           spelerWijzigButton.setEnabled(true);
+           spelerVoegButton.setEnabled(false);
+           spelerSchrijfButton.setEnabled(true);
+           
            StringBuilder sb= new StringBuilder();
            sb.append(selectedSpeler.getRating());
            String rating=sb.toString();
            StringBuilder sb2= new StringBuilder();
            sb2.append(selectedSpeler.getGeld());
            String gg=sb2.toString();
+           
            spelerVoornaamField.setText(selectedSpeler.getVoornaam());
            spelerTussenField.setText(selectedSpeler.getTussenvoegsel());
            spelerAchternaamField.setText(selectedSpeler.getAchternaam());
@@ -850,17 +869,90 @@ public class GUI extends javax.swing.JFrame {
            
            spelerRatingField.setText(rating);
            gewonnengeld.setText(gg);
+           }
     }//GEN-LAST:event_lijstSpelersValueChanged
-private void wijzigenSpeler()
+    private void reset()
+    {
+           spelerVoornaamField.setText("");
+           spelerTussenField.setText("");
+           spelerAchternaamField.setText("");
+           spelerStraatField.setText("");
+           spelerNummerFIeld.setText("");
+           spelerPlaatsField.setText("");
+           spelerPostcodeField.setText("");
+           spelerTelThuisField.setText("");
+           spelerThuisMobielField.setText("");
+           spelerEmailField.setText("");
+           spelerRatingField.setText("");
+           gewonnengeld.setText("");      
+    }
+    
+    private void toevoegenSpeler()
+    {
+     
+     
+    
+         System.out.println(1);
+         try{
+            Connection conn= FullHouseDatabase.getConnection();
+            String query= "select max(persoon_nr)from persoon";
+            Statement stat=conn.createStatement();
+            ResultSet result= stat.executeQuery(query);
+            int pnr=0;
+            
+            while(result.next())
+            {
+             pnr=result.getInt("max(persoon_nr)")+1;
+                System.out.println(pnr);
+                    }
+            String query2="INSERT INTO persoon VALUES(?,?,?,?,?,?,?,?, ?, ?, ?)";
+            String query3="INSERT INTO speler VALUES(?,?,?)";
+            
+            PreparedStatement stat2=conn.prepareStatement(query2);
+            PreparedStatement stat3=conn.prepareStatement(query3);
+            stat3.setInt(1, pnr);
+            stat3.setString(2, null);
+            stat3.setString(3, null); 
+            
+            stat2.setInt(1, pnr);
+            stat2.setString(2, spelerVoornaamField.getText());
+            stat2.setString(3, spelerTussenField.getText());
+            stat2.setString(4, spelerAchternaamField.getText());
+            stat2.setString(5, spelerStraatField.getText());
+            stat2.setString(6, spelerNummerFIeld.getText());
+            stat2.setString(7, spelerPostcodeField.getText());
+            stat2.setString(8, spelerPlaatsField.getText());
+            
+            stat2.setString(9, spelerTelThuisField.getText());
+            stat2.setString(10, spelerThuisMobielField.getText());
+            stat2.setString(11, spelerEmailField.getText());
+            System.out.println(stat2);
+            int effectedRecords=stat2.executeUpdate();
+            int effectedRecords2=stat3.executeUpdate();
+            System.out.println("Aantal gewijzigde records: "+ effectedRecords);
+            showLijstSpelers();
+            reset();
+         }
+         
+         catch(Exception e)
+         {
+             System.out.println(e);
+         }
+          
+     
+    }
+   //Wijzigen van spelers door middel van het ophalen van het geselecteerde persoon en met behulp van de persoon_nr een query te sturen 
+    private void wijzigenSpeler()
    {
        try{
             
-        
+          Speler selectedSpeler= (Speler) lijstSpelers.getSelectedValue(); 
+          int pnr= selectedSpeler.getPNR();
           Connection conn= FullHouseDatabase.getConnection();
-          String query="UPDATE persoon SET voornaam=?, tussenvoegsel=?, achternaam=?, straat=?, huisnummer=?, woonplaats=?, postcode=?, mobiel_nr=?, vast_nr=? join persoon on speler_nr=persoon_nr";
-          String query2="UPDATE speler SET rating=? SET gewonnen_geld=?";
+          String query="UPDATE persoon SET voornaam=?, tussenvoegsel=?, achternaam=?, straat=?, huisnummer=?, woonplaats=?, postcode=?, mobiel_nr=?, vast_nr=?, email=?where persoon_nr= "+pnr;
+//          String query2="UPDATE speler SET rating=?,  gewonnen_geld=? where speler_nr= "+pnr;
           PreparedStatement stat= conn.prepareStatement(query);
-          PreparedStatement stat2=conn.prepareStatement(query2);
+//          PreparedStatement stat2=conn.prepareStatement(query2);
           stat.setString(1, spelerVoornaamField.getText());
           stat.setString(2, spelerTussenField.getText());
           stat.setString(3, spelerAchternaamField.getText());
@@ -870,15 +962,16 @@ private void wijzigenSpeler()
           stat.setString(7, spelerPostcodeField.getText());
           stat.setString(8, spelerTelThuisField.getText());
           stat.setString(9, spelerThuisMobielField.getText());
-          
-          stat2.setString(1, spelerRatingField.getText());
-          stat2.setDouble(2, Double.parseDouble(gewonnengeld.getText()));
-          
+          stat.setString(10, spelerEmailField.getText());
+//          stat2.setDouble(1, Double.parseDouble(spelerRatingField.getText()));
+//          stat2.setDouble(2, Double.parseDouble(gewonnengeld.getText()));
+          System.out.println(stat);
           int effectedRecords=stat.executeUpdate();
-          int effectedRecords2=stat2.executeUpdate();
+//          int effectedRecords2=stat2.executeUpdate();
           
           System.out.println("Aantal gewijzigde records in persoon: " + effectedRecords);
-          System.out.println("Aantal gewijzigde records in speler:" + effectedRecords2);
+//          System.out.println("Aantal gewijzigde records in speler:" + effectedRecords2);
+          showLijstSpelers();
        }
           catch(Exception e)
                   {
@@ -899,9 +992,8 @@ private void wijzigenSpeler()
           DefaultListModel dm= new DefaultListModel();
           System.out.println(query);
           
-          Speler nieuwSpeler=new Speler();
-          nieuwSpeler.setNaam("--Nieuwe speler--", "", "");
-          dm.addElement(nieuwSpeler);
+          
+          dm.addElement("--Nieuwe Speler--");
           while (result.next())
           {
    
