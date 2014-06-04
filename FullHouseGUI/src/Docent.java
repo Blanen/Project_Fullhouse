@@ -9,11 +9,11 @@
  * @author Regi
  */
 public class Docent {
-    
-    public Docent(int docent_nr){
+
+    public Docent(int docent_nr) {
     }
-    
-    public int getID(){
+
+    public int getID() {
         return 0;
     }
 }

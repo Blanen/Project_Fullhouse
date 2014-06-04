@@ -19,8 +19,8 @@ public class MasterClass extends Event {
     private int min_rating;
     private Docent docent;
 
-    public MasterClass(String plaats, Date datum, String tijd, double inschrijfGeld, int min_rating, Docent docent) {
-        super(plaats, datum, tijd, inschrijfGeld);
+    public MasterClass(String plaats, Date datum, String tijd, double inschrijfGeld, int max_inschrijvingen, int min_rating, Docent docent) {
+        super(plaats, datum, tijd, inschrijfGeld, max_inschrijvingen);
         this.docent = docent;
         this.min_rating = min_rating;
     }
@@ -39,7 +39,7 @@ public class MasterClass extends Event {
         } catch (SQLException e) {
             System.out.println(e);
         }
-        
+
     }
 
     @Override

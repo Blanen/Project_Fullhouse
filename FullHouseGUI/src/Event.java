@@ -21,13 +21,15 @@ public abstract class Event {
     private String tijd;
     private double inschrijfGeld;
     private int event_nr;
+    private int max_inschrijvingen;
     private boolean existsInDB;
 
-    public Event(String plaats, Date datum, String tijd, double inschrijfGeld) {
+    public Event(String plaats, Date datum, String tijd, double inschrijfGeld, int max_inschrijvingen) {
         this.plaats = plaats;
         this.datum = datum;
         this.tijd = tijd;
         this.inschrijfGeld = inschrijfGeld;
+        this.max_inschrijvingen = max_inschrijvingen;
     }
 
     public Event(int event_nr) {
@@ -42,31 +44,32 @@ public abstract class Event {
             this.datum = result.getDate("datum");
             this.tijd = result.getString("tijd");
             this.inschrijfGeld = result.getDouble("inschrijfgeld");
+            this.max_inschrijvingen = result.getInt("max_inschrijvingen");
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
-    
+
     public abstract boolean existsInDB();
-    
-    public void writeToDB(){
-        String update = "UPDATE event SET plaats = "+plaats+", datum = "+datum+", tijd = "+tijd+", inschrijfgeld = "+inschrijfGeld+" WHERE event_nr = "+event_nr+";";
-        String write = "INSERT INTO event VALUES("+getEventNr()+", "+ plaats +", "+ datum +", "+tijd+", "+inschrijfGeld+");";
+
+    public void writeToDB() {
+        String update = "UPDATE event SET plaats = " + plaats + ", datum = " + datum + ", tijd = " + tijd + ", inschrijfgeld = " + inschrijfGeld + ", max_inschrijvingen = "+max_inschrijvingen+" WHERE event_nr = " + event_nr + ";";
+        String write = "INSERT INTO event VALUES(" + getEventNr() + ", " + plaats + ", " + datum + ", " + tijd + ", " + inschrijfGeld +","+max_inschrijvingen+");";
         Connection conn = null;
         Statement stat;
-        try{
+        try {
             stat = conn.createStatement();
-            if(existsInDB()){
+            if (existsInDB()) {
                 stat.executeUpdate(update);
-            }else{
+            } else {
                 stat.executeUpdate(write);
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
-    
-    public int getEventNr(){
+
+    public int getEventNr() {
         return event_nr;
     }
 }

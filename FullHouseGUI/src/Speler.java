@@ -9,5 +9,5 @@
  * @author Regi
  */
 public class Speler {
-    
+
 }
