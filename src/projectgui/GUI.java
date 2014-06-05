@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package projectgui;
 
 import java.sql.Connection;
@@ -13,14 +12,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Bart
  */
 public class GUI extends javax.swing.JFrame {
-private DefaultComboBoxModel dfcm= new DefaultComboBoxModel();
-private DefaultListModel dm= new DefaultListModel();
+
+    private DefaultComboBoxModel dfcm = new DefaultComboBoxModel();
+   
+
     /**
      * Creates new form GUI
      */
@@ -32,10 +34,14 @@ private DefaultListModel dm= new DefaultListModel();
         text2.enable(false);
         text3.enable(false);
         fillZoekComboBox();
+        
+        
         showLijstSpelers();
         
         
+        
         spelerWijzigButton.setEnabled(false);
+        spelerVerwijderButton.setEnabled(false);
        
        
     }
@@ -143,6 +149,7 @@ private DefaultListModel dm= new DefaultListModel();
         jLabel28 = new javax.swing.JLabel();
         label2 = new javax.swing.JLabel();
         label3 = new javax.swing.JLabel();
+        spelerVerwijderButton = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -649,6 +656,13 @@ private DefaultListModel dm= new DefaultListModel();
 
         label3.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
 
+        spelerVerwijderButton.setText("Vewijder");
+        spelerVerwijderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                spelerVerwijderButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout optie1Layout = new javax.swing.GroupLayout(optie1);
         optie1.setLayout(optie1Layout);
         optie1Layout.setHorizontalGroup(
@@ -722,12 +736,6 @@ private DefaultListModel dm= new DefaultListModel();
                                                 .addComponent(zoekComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGroup(optie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(optie1Layout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addComponent(spelerToernooiButton)
-                                                .addGap(26, 26, 26)
-                                                .addComponent(spelerMasterclassButton)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addGroup(optie1Layout.createSequentialGroup()
                                                 .addGap(35, 35, 35)
                                                 .addGroup(optie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                     .addComponent(text1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
@@ -742,7 +750,16 @@ private DefaultListModel dm= new DefaultListModel();
                                                         .addGroup(optie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                             .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                                                             .addComponent(label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                            .addGroup(optie1Layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addGroup(optie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(spelerVerwijderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(optie1Layout.createSequentialGroup()
+                                                        .addComponent(spelerToernooiButton)
+                                                        .addGap(26, 26, 26)
+                                                        .addComponent(spelerMasterclassButton)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                         .addGroup(optie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel27)
                                             .addComponent(jLabel28))))
@@ -802,7 +819,8 @@ private DefaultListModel dm= new DefaultListModel();
                         .addGap(18, 18, 18)
                         .addGroup(optie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(spelerWijzigButton)
-                            .addComponent(spelerVoegButton))
+                            .addComponent(spelerVoegButton)
+                            .addComponent(spelerVerwijderButton))
                         .addGap(37, 37, 37)
                         .addGroup(optie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(spelerSchrijfButton)
@@ -815,12 +833,12 @@ private DefaultListModel dm= new DefaultListModel();
                             .addComponent(text1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(optie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(text2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(optie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(optie1Layout.createSequentialGroup()
                                 .addComponent(jLabel27)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(text2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(optie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(text3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -854,41 +872,41 @@ private DefaultListModel dm= new DefaultListModel();
     }//GEN-LAST:event_jButton3ActionPerformed
 
         private void lijstSpelersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lijstSpelersMouseClicked
-               
+
         }//GEN-LAST:event_lijstSpelersMouseClicked
 
         private void jList2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList2MouseClicked
-         
+
         }//GEN-LAST:event_jList2MouseClicked
 
         private void spelerSchrijfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerSchrijfButtonActionPerformed
-                // TODO add your handling code here:
-		jFrame2.setVisible(true);
-		jFrame2.setSize(400, 300);
+            // TODO add your handling code here:
+            jFrame2.setVisible(true);
+            jFrame2.setSize(400, 300);
         }//GEN-LAST:event_spelerSchrijfButtonActionPerformed
 
         private void spelerAchternaamFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerAchternaamFieldActionPerformed
-              
+
         }//GEN-LAST:event_spelerAchternaamFieldActionPerformed
 
         private void spelerNummerFIeldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerNummerFIeldActionPerformed
-              
+
         }//GEN-LAST:event_spelerNummerFIeldActionPerformed
 
         private void spelerPlaatsFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerPlaatsFieldActionPerformed
-               
+
         }//GEN-LAST:event_spelerPlaatsFieldActionPerformed
 
         private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       zoeken();              
+            zoeken();
         }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-    
+
     }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void spelerVoegButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerVoegButtonActionPerformed
-        toevoegenSpeler();   
+        toevoegenSpeler();
     }//GEN-LAST:event_spelerVoegButtonActionPerformed
 
     private void spelerWijzigButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerWijzigButtonActionPerformed
@@ -896,19 +914,19 @@ private DefaultListModel dm= new DefaultListModel();
     }//GEN-LAST:event_spelerWijzigButtonActionPerformed
 
     private void lijstSpelersValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lijstSpelersValueChanged
-         
-        
-        if(lijstSpelers.getSelectedIndex()==0 )
+
+         if(lijstSpelers.getSelectedIndex()==0 )
            {
            spelerWijzigButton.setEnabled(false);
            spelerVoegButton.setEnabled(true);
            spelerSchrijfButton.setEnabled(true);
-           
+           spelerVerwijderButton.setEnabled(false);
            reset();
            }
            else{
-            Speler selectedSpeler= (Speler)lijstSpelers.getSelectedValue(); 
+           Speler selectedSpeler= (Speler)lijstSpelers.getSelectedValue(); 
            spelerWijzigButton.setEnabled(true);
+           spelerVerwijderButton.setEnabled(true);
            spelerVoegButton.setEnabled(false);
            spelerSchrijfButton.setEnabled(true);
            
@@ -932,7 +950,7 @@ private DefaultListModel dm= new DefaultListModel();
        
            spelerRatingField.setText(rating);
            gewonnengeld.setText(gg);
-           }
+        }
     }//GEN-LAST:event_lijstSpelersValueChanged
 
     private void text1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text1ActionPerformed
@@ -944,7 +962,11 @@ private DefaultListModel dm= new DefaultListModel();
         if(selectedItem.equals("ID"))
         {
             text1.enable(true);
+            clearText(text2);
+            clearText(text3);
+            clearText(text1);
             text2.enable(false);
+            
             text3.enable(false);
             label1.setText("ID");
             label2.setText("");
@@ -964,6 +986,10 @@ private DefaultListModel dm= new DefaultListModel();
             text1.enable(true);
             text2.enable(true);
             text3.enable(true);
+            
+            clearText(text2);
+            clearText(text3);
+            clearText(text1);
             label1.setText("Naam");
             label2.setText("Tussenvoegsel");
             label3.setText("Achternaam");
@@ -973,109 +999,140 @@ private DefaultListModel dm= new DefaultListModel();
            text1.enable(false);
            text2.enable(false);
            text3.enable(false);
+           
+           clearText(text2);
+           clearText(text3);
+           clearText(text1);
+           
            label1.setText("");
            label2.setText("");
            label3.setText("");
            showLijstSpelers();
         }
     }//GEN-LAST:event_zoekComboBoxItemStateChanged
-    private void fillZoekComboBox()
+
+    private void spelerVerwijderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerVerwijderButtonActionPerformed
+       verwijderenSpeler();
+    }//GEN-LAST:event_spelerVerwijderButtonActionPerformed
+    private void clearText(JTextField text)
     {
-        String[] zoekopties= {"Toon alle spelers","ID","Postcode/Huisnummer","Naam/Achternaam"};
-        
+        text.setText("");
+    }
+    
+    private void fillZoekComboBox() {
+        String[] zoekopties = {"Toon alle spelers", "ID", "Postcode/Huisnummer", "Naam/Achternaam"};
+
         for (String zoekoptie : zoekopties) {
             dfcm.addElement(zoekoptie);
         }
         zoekComboBox.setModel(dfcm);
     }
-    
-    private void zoeken()
+
+    private void zoeken() {
+        try {
+            Connection conn = FullHouseDatabase.getConnection();
+
+            String selectedItem = (String) zoekComboBox.getSelectedItem();
+            String query = "";
+            PreparedStatement stat;
+
+            if (selectedItem.equals("ID")) {
+                query = "SELECT * from persoon join speler on persoon_nr=speler_nr where persoon_nr not in(select docent_nr from docent ) and persoon_nr=?";
+                stat = conn.prepareStatement(query);
+                stat.setInt(1, Integer.parseInt(text1.getText()));
+                ResultSet result = stat.executeQuery();
+                maakSpeler(result);
+            } else if (selectedItem.equals("Postcode/Huisnummer")) {
+                query = "SELECT * FROM persoon join speler on persoon_nr=speler_nr where persoon_nr not in(select docent_nr from docent) and postcode like ? and huisnummer like ?";
+                stat = conn.prepareStatement(query);
+                stat.setString(1, (text1.getText()));
+                stat.setString(2, "%"+text2.getText());
+                ResultSet result = stat.executeQuery();
+                maakSpeler(result);
+            } else if (selectedItem.equals("Naam/Achternaam")) {
+                query = "SELECT * FROM persoon join speler on persoon_nr=speler_nr where persoon_nr not in(select docent_nr from docent) and voornaam like ? and tussenvoegsel like ? and achternaam like?";
+                stat = conn.prepareStatement(query);
+                stat.setString(1, (text1.getText()));
+                stat.setString(2, "%"+text2.getText()+"%");
+                stat.setString(3, text3.getText());
+                ResultSet result = stat.executeQuery();
+                maakSpeler(result);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+    }
+
+    private void reset() {
+        spelerVoornaamField.setText("");
+        spelerTussenField.setText("");
+        spelerAchternaamField.setText("");
+        spelerStraatField.setText("");
+        spelerNummerFIeld.setText("");
+        spelerPlaatsField.setText("");
+        spelerPostcodeField.setText("");
+        spelerTelThuisField.setText("");
+        spelerThuisMobielField.setText("");
+        spelerEmailField.setText("");
+        spelerRatingField.setText("");
+        gewonnengeld.setText("");
+    }
+ //Verwijderen van spelers door het ophalen van de geselecteerde item in lijstSpelers
+    private void verwijderenSpeler()
     {
         try{
-            Connection conn= FullHouseDatabase.getConnection();
-       
-            String selectedItem=(String) zoekComboBox.getSelectedItem();
-            String query="";
-            PreparedStatement stat;
-            
-                if(selectedItem.equals("ID"))
-        {
-            query="SELECT * from persoon join speler on persoon_nr=speler_nr where persoon_nr not in(select docent_nr from docent ) and persoon_nr=?";
-            stat=conn.prepareStatement(query);
-            stat.setInt(1,Integer.parseInt(text1.getText()));
-            ResultSet result=stat.executeQuery();
-            maakSpeler(result);
-        }
-               else if(selectedItem.equals("Postcode/Huisnummer"))
-        {
-            query="SELECT * FROM persoon join speler on persoon_nr=speler_nr where persoon_nr not in(select docent_nr from docent) and postcode=? and huisnummer=?"; 
-            stat=conn.prepareStatement(query);
-            stat.setString(1,(text1.getText()));
-            stat.setString(2, text2.getText());
-            ResultSet result= stat.executeQuery();
-            maakSpeler(result);
-        }
-               else if(selectedItem.equals("Naam/Achternaam"))
-               {
-            query="SELECT * FROM persoon join speler on persoon_nr=speler_nr where persoon_nr not in(select docent_nr from docent) and voornaam=? and tussenvoegsel=? and achternaam=?"; 
-            stat=conn.prepareStatement(query);
-            stat.setString(1,(text1.getText()));
-            stat.setString(2, text2.getText());
-            stat.setString(3, text3.getText());
-            ResultSet result= stat.executeQuery();
-            maakSpeler(result);  
-               }
-        }
-       catch(SQLException e)
+         
+            Connection conn=FullHouseDatabase.getConnection();
            
-               {
-               System.out.println(e);
-               }
-    
+        Speler selectedSpeler= (Speler)lijstSpelers.getSelectedValue();
+        
+        String query="DELETE  from persoon where persoon_nr=?";
+        PreparedStatement stat= conn.prepareStatement(query);
+        stat.setInt(1,selectedSpeler.getPNR());
+        stat.executeUpdate();
+        zoekComboBox.setSelectedIndex(2);
+        zoekComboBox.setSelectedIndex(0);
+        lijstSpelers.setSelectedIndex(0);
+        
+         }
+        
+        
+        
+       
+        
+        
+        
+        catch(SQLException e)
+        {
+            System.out.println(e);
+        }
+        
+        
     }
-    private void reset()
-    {
-           spelerVoornaamField.setText("");
-           spelerTussenField.setText("");
-           spelerAchternaamField.setText("");
-           spelerStraatField.setText("");
-           spelerNummerFIeld.setText("");
-           spelerPlaatsField.setText("");
-           spelerPostcodeField.setText("");
-           spelerTelThuisField.setText("");
-           spelerThuisMobielField.setText("");
-           spelerEmailField.setText("");
-           spelerRatingField.setText("");
-           gewonnengeld.setText("");      
-    }
-    
-    private void toevoegenSpeler()
-    {
-     
-     
-    
-         System.out.println(1);
-         try{
-            Connection conn= FullHouseDatabase.getConnection();
-            String query= "select max(persoon_nr)from persoon";
-            Statement stat=conn.createStatement();
-            ResultSet result= stat.executeQuery(query);
-            int pnr=0;
-            
-            while(result.next())
-            {
-             pnr=result.getInt("max(persoon_nr)")+1;
+    private void toevoegenSpeler() {
+
+        System.out.println(1);
+        try {
+            Connection conn = FullHouseDatabase.getConnection();
+            String query = "select max(persoon_nr)from persoon";
+            Statement stat = conn.createStatement();
+            ResultSet result = stat.executeQuery(query);
+            int pnr = 0;
+
+            while (result.next()) {
+                pnr = result.getInt("max(persoon_nr)") + 1;
                 System.out.println(pnr);
-                    }
-            String query2="INSERT INTO persoon VALUES(?,?,?,?,?,?,?,?, ?, ?, ?)";
-            String query3="INSERT INTO speler VALUES(?,?,?)";
-            
-            PreparedStatement stat2=conn.prepareStatement(query2);
-            PreparedStatement stat3=conn.prepareStatement(query3);
+            }
+            String query2 = "INSERT INTO persoon VALUES(?,?,?,?,?,?,?,?, ?, ?, ?)";
+            String query3 = "INSERT INTO speler VALUES(?,?,?)";
+
+            PreparedStatement stat2 = conn.prepareStatement(query2);
+            PreparedStatement stat3 = conn.prepareStatement(query3);
             stat3.setInt(1, pnr);
             stat3.setString(2, null);
-            stat3.setString(3, null); 
-            
+            stat3.setString(3, null);
+
             stat2.setInt(1, pnr);
             stat2.setString(2, spelerVoornaamField.getText());
             stat2.setString(3, spelerTussenField.getText());
@@ -1084,99 +1141,80 @@ private DefaultListModel dm= new DefaultListModel();
             stat2.setString(6, spelerNummerFIeld.getText());
             stat2.setString(7, spelerPostcodeField.getText());
             stat2.setString(8, spelerPlaatsField.getText());
-            
+
             stat2.setString(9, spelerTelThuisField.getText());
             stat2.setString(10, spelerThuisMobielField.getText());
             stat2.setString(11, spelerEmailField.getText());
             System.out.println(stat2);
-            int effectedRecords=stat2.executeUpdate();
-            int effectedRecords2=stat3.executeUpdate();
-            System.out.println("Aantal gewijzigde records: "+ effectedRecords);
+            int effectedRecords = stat2.executeUpdate();
+            int effectedRecords2 = stat3.executeUpdate();
+            
             showLijstSpelers();
             reset();
-         }
-         
-         catch(SQLException e)
-         {
-             System.out.println(e);
-         }
-          
-     
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
     }
-   //Wijzigen van spelers door middel van het ophalen van het geselecteerde persoon en met behulp van de persoon_nr een query te sturen 
-    private void wijzigenSpeler()
-   {
-       try{
-            
-          Speler selectedSpeler= (Speler) lijstSpelers.getSelectedValue(); 
-          int pnr= selectedSpeler.getPNR();
-          Connection conn= FullHouseDatabase.getConnection();
-          String query="UPDATE persoon SET voornaam=?, tussenvoegsel=?, achternaam=?, straat=?, huisnummer=?, woonplaats=?, postcode=?, mobiel_nr=?, vast_nr=?, email=?where persoon_nr= "+pnr;
+
+    //Wijzigen van spelers door middel van het ophalen van het geselecteerde persoon en met behulp van de persoon_nr een query te sturen 
+    private void wijzigenSpeler() {
+        try {
+
+            Speler selectedSpeler = (Speler) lijstSpelers.getSelectedValue();
+            int pnr = selectedSpeler.getPNR();
+            Connection conn = FullHouseDatabase.getConnection();
+            String query = "UPDATE persoon SET voornaam=?, tussenvoegsel=?, achternaam=?, straat=?, huisnummer=?, woonplaats=?, postcode=?, mobiel_nr=?, vast_nr=?, emailadres=?where persoon_nr= " + pnr;
 //          String query2="UPDATE speler SET rating=?,  gewonnen_geld=? where speler_nr= "+pnr;
-          PreparedStatement stat= conn.prepareStatement(query);
+            PreparedStatement stat = conn.prepareStatement(query);
 //          PreparedStatement stat2=conn.prepareStatement(query2);
-          stat.setString(1, spelerVoornaamField.getText());
-          stat.setString(2, spelerTussenField.getText());
-          stat.setString(3, spelerAchternaamField.getText());
-          stat.setString(4, spelerStraatField.getText());
-          stat.setString(5, spelerNummerFIeld.getText());
-          stat.setString(6, spelerPlaatsField.getText());
-          stat.setString(7, spelerPostcodeField.getText());
-          stat.setString(8, spelerTelThuisField.getText());
-          stat.setString(9, spelerThuisMobielField.getText());
-          stat.setString(10, spelerEmailField.getText());
+            stat.setString(1, spelerVoornaamField.getText());
+            stat.setString(2, spelerTussenField.getText());
+            stat.setString(3, spelerAchternaamField.getText());
+            stat.setString(4, spelerStraatField.getText());
+            stat.setString(5, spelerNummerFIeld.getText());
+            stat.setString(6, spelerPlaatsField.getText());
+            stat.setString(7, spelerPostcodeField.getText());
+            stat.setString(8, spelerTelThuisField.getText());
+            stat.setString(9, spelerThuisMobielField.getText());
+            stat.setString(10, spelerEmailField.getText());
 //          stat2.setDouble(1, Double.parseDouble(spelerRatingField.getText()));
 //          stat2.setDouble(2, Double.parseDouble(gewonnengeld.getText()));
-          System.out.println(stat);
-          int effectedRecords=stat.executeUpdate();
+            System.out.println(stat);
+            int effectedRecords = stat.executeUpdate();
 //          int effectedRecords2=stat2.executeUpdate();
-          
-          System.out.println("Aantal gewijzigde records in persoon: " + effectedRecords);
-//          System.out.println("Aantal gewijzigde records in speler:" + effectedRecords2);
-          showLijstSpelers();
-       }
-          catch(Exception e)
-                  {
-                  System.out.println(e);
-                  }
-   }
 
-  // Genereert een lijst van alle spelers afhankelijk van de zoekopdracht  
-  private void showLijstSpelers() 
-{
-   try{
-            
-        
-          Connection conn= FullHouseDatabase.getConnection();
-          Statement stat= conn.createStatement();
-          String query="SELECT * FROM speler join persoon on speler_nr=persoon_nr where persoon_nr not in (select docent_nr from docent)";
-          ResultSet result=stat.executeQuery(query);
-          
-          System.out.println(query);
-          
-          
-         
-         //w
-   
-              maakSpeler(result);
-              
-          
-           
-            
-        
-          
-        }
-        catch(SQLException e)
-        {
+            System.out.println("Aantal gewijzigde records in persoon: " + effectedRecords);
+//          System.out.println("Aantal gewijzigde records in speler:" + effectedRecords2);
+            showLijstSpelers();
+        } catch (Exception e) {
             System.out.println(e);
-        }  
-}
-  private void maakSpeler(ResultSet rs)
+        }
+    }
+
+    // Genereert een lijst van alle spelers afhankelijk van de zoekopdracht  
+    private void showLijstSpelers() {
+        try {
+
+            Connection conn = FullHouseDatabase.getConnection();
+            Statement stat = conn.createStatement();
+            String query = "SELECT * FROM speler join persoon on speler_nr=persoon_nr where persoon_nr not in (select docent_nr from docent)";
+            ResultSet result = stat.executeQuery(query);
+
+            System.out.println(query);
+            maakSpeler(result);
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    private void maakSpeler(ResultSet rs)
   {
      try{
-         dm.removeAllElements();
-          dm.addElement("--Nieuwe Speler--");
-         while(rs.next()){
+      
+     DefaultListModel dm= new DefaultListModel();
+     dm.addElement("--Nieuwe Speler--"); 
+     while(rs.next()){
      Speler speler= new Speler();
      speler.setNr(rs.getInt("speler_nr"));
      speler.setNaam(rs.getString("voornaam"), rs.getString("tussenvoegsel"), rs.getString("achternaam"));
@@ -1194,6 +1232,7 @@ private DefaultListModel dm= new DefaultListModel();
          
      }
   }
+
     /**
      * @param args the command line arguments
      */
@@ -1317,6 +1356,7 @@ private DefaultListModel dm= new DefaultListModel();
     private javax.swing.JTextField spelerThuisMobielField;
     private javax.swing.JRadioButton spelerToernooiButton;
     private javax.swing.JTextField spelerTussenField;
+    private javax.swing.JButton spelerVerwijderButton;
     private javax.swing.JButton spelerVoegButton;
     private javax.swing.JTextField spelerVoornaamField;
     private javax.swing.JButton spelerWijzigButton;
