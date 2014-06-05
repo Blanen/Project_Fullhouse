@@ -3,7 +3,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
+import java.sql.Date;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -30,7 +30,7 @@ public class MasterClass extends Event {
         String query = "SELECT * FROM masterclass WHERE masterclass_nr =" + masterclass_nr + ";";
         ResultSet result;
         try {
-            Connection conn = null;
+            Connection conn = FullHouseDatabase.getConnection();
             Statement stat = conn.createStatement();
             result = stat.executeQuery(query);
             result.next();
@@ -44,13 +44,13 @@ public class MasterClass extends Event {
 
     @Override
     public boolean existsInDB() {
-        String query = "SELECT EXISTS(masterclass_nr) AS exists FROM masterclass WHERE masterclass_nr = " + getEventNr() + ";";
-        Connection conn = null;
+        String query = " SELECT EXISTS(SELECT masterclass_nr FROM masterclass WHERE masterclass_nr = "+getEventNr()+")AS exist;";
         try {
+            Connection conn = FullHouseDatabase.getConnection();
             Statement stat = conn.createStatement();
             ResultSet result = stat.executeQuery(query);
             result.next();
-            return result.getBoolean("exists");
+            return result.getBoolean("exist");
         } catch (SQLException e) {
             System.out.println(e);
             return false;
@@ -61,12 +61,12 @@ public class MasterClass extends Event {
     @Override
     public void writeToDB() {
         super.writeToDB();
-        String update = "UPDATE masterclass SET docent = min_rating = " + min_rating + ", " + docent.getID() + " WHERE masterclass_nr = " + getEventNr() + ";";
-        String write = "INSERT INTO masterclass VALUES(" + getEventNr() + ", " + min_rating + ", " + docent.getID() + ");";
-        Connection conn = null;
-        Statement stat;
+        String update = "UPDATE masterclass SET docent = min_rating = " + min_rating + ", " + getDocent().getPNR()+ " WHERE masterclass_nr = " + getEventNr() + ";";
+        String write = "INSERT INTO masterclass VALUES(" + getEventNr() + ", " + min_rating + ", " + getDocent().getPNR() + ");";
+        
         try {
-            stat = conn.createStatement();
+            Connection conn = FullHouseDatabase.getConnection();
+            Statement stat = conn.createStatement();
             if (existsInDB()) {
                 stat.executeUpdate(update);
             } else {
@@ -75,5 +75,27 @@ public class MasterClass extends Event {
         } catch (SQLException e) {
             System.out.println(e);
         }
+    }
+    
+    public void setMinRating(int minRating){
+        min_rating = minRating;
+    }
+    
+     public int getMinRating(){
+        return min_rating;
+    }
+
+    /**
+     * @return the docent
+     */
+    public Docent getDocent() {
+        return docent;
+    }
+
+    /**
+     * @param docent the docent to set
+     */
+    public void setDocent(Docent docent) {
+        this.docent = docent;
     }
 }

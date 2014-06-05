@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -31,8 +31,9 @@ public class Toernooi extends Event {
     public Toernooi(int toernooi_nr) {
         super(toernooi_nr);
         String query = "SELECT * FROM toernooi WHERE toernooi_nr = " + toernooi_nr + ";";
-        Connection conn = null;
+        
         try {
+            Connection conn = FullHouseDatabase.getConnection();
             Statement stat = conn.createStatement();
             ResultSet result = stat.executeQuery(query);
             result.next();
@@ -45,13 +46,14 @@ public class Toernooi extends Event {
 
     @Override
     public boolean existsInDB() {
-        String query = "SELECT EXISTS(toernooi_nr) AS exists FROM toernooi WHERE toernooi_nr = " + getEventNr() + ";";
-        Connection conn = null;
+        String query = " SELECT EXISTS(SELECT toernooi_nr FROM toernooi WHERE toernooi_nr = "+getEventNr()+")AS exist;";
+        
         try {
+            Connection conn = FullHouseDatabase.getConnection();
             Statement stat = conn.createStatement();
             ResultSet result = stat.executeQuery(query);
             result.next();
-            return result.getBoolean("exists");
+            return result.getInt("exist")==1;
         } catch (SQLException e) {
             System.out.println(e);
             return false;
@@ -61,11 +63,13 @@ public class Toernooi extends Event {
     @Override
     public void writeToDB() {
         super.writeToDB();
+        
         String update = "UPDATE toernooi set tafelGrootte = " + getTafelGrootte() + ", rondes = " + getRondes() + " WHERE toernooi_nr = " + getEventNr() + ";";
-        String write = "INSERT INTO toernooi VALUES(" + getEventNr() + ", " + getTafelGrootte() + ", " + getRondes() + ");";
-        Connection conn = null;
-        Statement stat = null;
+        String write = "INSERT INTO toernooi VALUES(" + getEventNr() + ", " + getTafelGrootte() + ", " + getRondes() + ", null, null, null);";
+        
+        Statement stat;
         try {
+            Connection conn = FullHouseDatabase.getConnection();
             stat = conn.createStatement();
             if (existsInDB()) {
                 stat.executeUpdate(update);
