@@ -5,7 +5,7 @@ package projectgui;
 
 public class Docent extends Persoon
 {
-    private int rekening_nr;
+    private String rekening_nr;
 
 
 public Docent()
@@ -32,7 +32,7 @@ public String[] geefKolommen()
      return kolomnamen;
 }
 
-public void setRekening(int rnr)
+public void setRekening(String rnr)
 {
     this.rekening_nr=rnr;
 }

@@ -352,7 +352,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jLabel12)
                         .addGap(18, 18, 18)
                         .addComponent(jTextField13))
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -444,7 +444,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 423, Short.MAX_VALUE))
+                        .addGap(26, 431, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -517,7 +517,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(652, Short.MAX_VALUE))
+                .addContainerGap(660, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -533,7 +533,7 @@ public class GUI extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 897, Short.MAX_VALUE)
+            .addGap(0, 905, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -707,13 +707,11 @@ public class GUI extends javax.swing.JFrame {
                                 .addGroup(optie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(optie1Layout.createSequentialGroup()
                                         .addComponent(jLabel24)
-                                        .addGap(0, 370, Short.MAX_VALUE))
+                                        .addGap(0, 378, Short.MAX_VALUE))
                                     .addComponent(spelerAchternaamField)))
                             .addComponent(spelerStraatField)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, optie1Layout.createSequentialGroup()
-                                .addComponent(spelerWijzigButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(spelerVoegButton))
+                            .addComponent(spelerTelThuisField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(spelerWijzigButton, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, optie1Layout.createSequentialGroup()
                                 .addGroup(optie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(optie1Layout.createSequentialGroup()
@@ -750,21 +748,21 @@ public class GUI extends javax.swing.JFrame {
                                                         .addGroup(optie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                             .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                                                             .addComponent(label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                                .addGroup(optie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel27)
+                                                    .addComponent(jLabel28)))
                                             .addGroup(optie1Layout.createSequentialGroup()
                                                 .addGap(18, 18, 18)
-                                                .addGroup(optie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(optie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addComponent(spelerVerwijderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGroup(optie1Layout.createSequentialGroup()
                                                         .addComponent(spelerToernooiButton)
                                                         .addGap(26, 26, 26)
                                                         .addComponent(spelerMasterclassButton)))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                        .addGroup(optie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel27)
-                                            .addComponent(jLabel28))))
-                                .addGap(182, 182, 182))
-                            .addComponent(spelerTelThuisField, javax.swing.GroupLayout.Alignment.LEADING))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(spelerVoegButton)))))
+                                .addGap(83, 83, 83)))
                         .addContainerGap())))
         );
         optie1Layout.setVerticalGroup(
@@ -855,7 +853,7 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 910, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -954,7 +952,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_lijstSpelersValueChanged
 
     private void text1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_text1ActionPerformed
 
     private void zoekComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_zoekComboBoxItemStateChanged
@@ -1037,24 +1035,24 @@ public class GUI extends javax.swing.JFrame {
             PreparedStatement stat;
 
             if (selectedItem.equals("ID")) {
-                query = "SELECT * from persoon join speler on persoon_nr=speler_nr where persoon_nr not in(select docent_nr from docent ) and persoon_nr=?";
+                query = "SELECT * from persoon join speler on persoon_nr=speler_nr where persoon_nr not in(select docent_nr from docent ) and persoon_nr=? order by voornaam";
                 stat = conn.prepareStatement(query);
                 stat.setInt(1, Integer.parseInt(text1.getText()));
                 ResultSet result = stat.executeQuery();
                 maakSpeler(result);
             } else if (selectedItem.equals("Postcode/Huisnummer")) {
-                query = "SELECT * FROM persoon join speler on persoon_nr=speler_nr where persoon_nr not in(select docent_nr from docent) and postcode like ? and huisnummer like ?";
+                query = "SELECT * FROM persoon join speler on persoon_nr=speler_nr where persoon_nr not in(select docent_nr from docent) and postcode like ? and huisnummer like ? order by voornaam";
                 stat = conn.prepareStatement(query);
                 stat.setString(1, (text1.getText()));
                 stat.setString(2, "%"+text2.getText());
                 ResultSet result = stat.executeQuery();
                 maakSpeler(result);
             } else if (selectedItem.equals("Naam/Achternaam")) {
-                query = "SELECT * FROM persoon join speler on persoon_nr=speler_nr where persoon_nr not in(select docent_nr from docent) and voornaam like ? and tussenvoegsel like ? and achternaam like?";
+                query = "SELECT * FROM persoon join speler on persoon_nr=speler_nr where persoon_nr not in(select docent_nr from docent) and voornaam like ? and tussenvoegsel like ? and achternaam like? order by voornaam";
                 stat = conn.prepareStatement(query);
-                stat.setString(1, (text1.getText()));
+                stat.setString(1, (text1.getText()+"%"));
                 stat.setString(2, "%"+text2.getText()+"%");
-                stat.setString(3, text3.getText());
+                stat.setString(3, "%"+text3.getText()+"%");
                 ResultSet result = stat.executeQuery();
                 maakSpeler(result);
             }
@@ -1097,12 +1095,6 @@ public class GUI extends javax.swing.JFrame {
         
          }
         
-        
-        
-       
-        
-        
-        
         catch(SQLException e)
         {
             System.out.println(e);
@@ -1110,6 +1102,7 @@ public class GUI extends javax.swing.JFrame {
         
         
     }
+    //Toevoegen van speler aan de database
     private void toevoegenSpeler() {
 
         System.out.println(1);
@@ -1146,12 +1139,13 @@ public class GUI extends javax.swing.JFrame {
             stat2.setString(10, spelerThuisMobielField.getText());
             stat2.setString(11, spelerEmailField.getText());
             System.out.println(stat2);
-            int effectedRecords = stat2.executeUpdate();
-            int effectedRecords2 = stat3.executeUpdate();
+            stat2.executeUpdate();
+            stat3.executeUpdate();
             
             showLijstSpelers();
             reset();
-        } catch (SQLException e) {
+        } 
+        catch (SQLException e) {
             System.out.println(e);
         }
 
@@ -1198,7 +1192,7 @@ public class GUI extends javax.swing.JFrame {
 
             Connection conn = FullHouseDatabase.getConnection();
             Statement stat = conn.createStatement();
-            String query = "SELECT * FROM speler join persoon on speler_nr=persoon_nr where persoon_nr not in (select docent_nr from docent)";
+            String query = "SELECT * FROM speler join persoon on speler_nr=persoon_nr where persoon_nr not in (select docent_nr from docent) order by voornaam";
             ResultSet result = stat.executeQuery(query);
 
             System.out.println(query);
