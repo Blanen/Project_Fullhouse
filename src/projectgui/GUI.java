@@ -1156,7 +1156,7 @@ private DefaultListModel dm= new DefaultListModel();
           
           
          
-         
+         //w
    
               maakSpeler(result);
               
