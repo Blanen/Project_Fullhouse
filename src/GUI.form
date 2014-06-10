@@ -68,7 +68,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jScrollPane7" min="-2" pref="219" max="-2" attributes="0"/>
-                              <EmptySpace min="26" pref="86" max="32767" attributes="0"/>
+                              <EmptySpace min="26" pref="187" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -138,7 +138,7 @@
                               <Component id="jScrollPane7" min="-2" pref="222" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButton6" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="83" max="32767" attributes="0"/>
+                              <EmptySpace pref="87" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -243,7 +243,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="DocentenTab" name="docentenTab">
+        <Component class="DocentenTab" name="docentenTab1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Docenten">
@@ -252,29 +252,29 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="ToernooiTab" name="toernooiTab">
+        <Component class="MasterClassTab" name="masterClassTab1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Toernooien">
-                <Property name="tabTitle" type="java.lang.String" value="Toernooien"/>
+              <JTabbedPaneConstraints tabName="Masterclassen">
+                <Property name="tabTitle" type="java.lang.String" value="Masterclassen"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="MasterClassTab" name="masterClassTab">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Masterclasses">
-                <Property name="tabTitle" type="java.lang.String" value="Masterclasses"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="SpelerTab" name="spelerTab">
+        <Component class="SpelerTab" name="spelerTab1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Spelers">
                 <Property name="tabTitle" type="java.lang.String" value="Spelers"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="ToernooiTab" name="toernooiTab1">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Toernooien">
+                <Property name="tabTitle" type="java.lang.String" value="Toernooien"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
