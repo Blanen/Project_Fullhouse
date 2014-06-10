@@ -46,6 +46,10 @@ public class SpelerTab extends javax.swing.JPanel {
                 jButton10 = new javax.swing.JButton();
                 jTextField19 = new javax.swing.JTextField();
                 spelerMasterclassFrame = new javax.swing.JFrame();
+                jScrollPane2 = new javax.swing.JScrollPane();
+                jTextArea1 = new javax.swing.JTextArea();
+                jLabel7 = new javax.swing.JLabel();
+                jTextField1 = new javax.swing.JTextField();
                 jScrollPane1 = new javax.swing.JScrollPane();
                 lijstSpelers = new javax.swing.JList();
                 jLabel1 = new javax.swing.JLabel();
@@ -140,15 +144,38 @@ public class SpelerTab extends javax.swing.JPanel {
                                 .addContainerGap())
                 );
 
+                jTextArea1.setColumns(20);
+                jTextArea1.setRows(5);
+                jScrollPane2.setViewportView(jTextArea1);
+
+                jLabel7.setText("Plaats");
+
                 javax.swing.GroupLayout spelerMasterclassFrameLayout = new javax.swing.GroupLayout(spelerMasterclassFrame.getContentPane());
                 spelerMasterclassFrame.getContentPane().setLayout(spelerMasterclassFrameLayout);
                 spelerMasterclassFrameLayout.setHorizontalGroup(
                         spelerMasterclassFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 400, Short.MAX_VALUE)
+                        .addGroup(spelerMasterclassFrameLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(spelerMasterclassFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(spelerMasterclassFrameLayout.createSequentialGroup()
+                                                .addComponent(jLabel7)
+                                                .addGap(0, 99, Short.MAX_VALUE))
+                                        .addComponent(jTextField1))
+                                .addContainerGap())
                 );
                 spelerMasterclassFrameLayout.setVerticalGroup(
                         spelerMasterclassFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 300, Short.MAX_VALUE)
+                        .addGroup(spelerMasterclassFrameLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(spelerMasterclassFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(spelerMasterclassFrameLayout.createSequentialGroup()
+                                                .addComponent(jLabel7)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
 
                 lijstSpelers.setModel(new javax.swing.AbstractListModel() {
@@ -737,10 +764,14 @@ public class SpelerTab extends javax.swing.JPanel {
         private javax.swing.JLabel jLabel4;
         private javax.swing.JLabel jLabel5;
         private javax.swing.JLabel jLabel6;
+        private javax.swing.JLabel jLabel7;
         private javax.swing.JLabel jLabel9;
         private javax.swing.JList jList5;
         private javax.swing.JScrollPane jScrollPane1;
+        private javax.swing.JScrollPane jScrollPane2;
         private javax.swing.JScrollPane jScrollPane6;
+        private javax.swing.JTextArea jTextArea1;
+        private javax.swing.JTextField jTextField1;
         private javax.swing.JTextField jTextField19;
         private javax.swing.JList lijstSpelers;
         private javax.swing.JTextField spelerAchternaamField;
