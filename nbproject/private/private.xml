@@ -2,19 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group>
-            <file>file:/C:/Users/Babita/OneDrive/Documents/Informatica/Blok%20B%20Databases/Git/Project_Fullhouse/src/projectgui/Docent.java</file>
-            <file>file:/C:/Users/Babita/OneDrive/Documents/Informatica/Blok%20B%20Databases/Git/Project_Fullhouse/src/projectgui/Speler.java</file>
-            <file>file:/C:/Users/Babita/OneDrive/Documents/Informatica/Blok%20B%20Databases/Git/Project_Fullhouse/src/projectgui/GUI.java</file>
-            <file>file:/C:/Users/Babita/OneDrive/Documents/Informatica/Blok%20B%20Databases/Git/Project_Fullhouse/src/projectgui/Persoon.java</file>
+        <group name="Inf-B_ProjectFullHouse">
+            <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/ToernooiInschrijving.java</file>
+            <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/Persoon.java</file>
+            <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/Tafel.java</file>
+            <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/Speler.java</file>
         </group>
-<<<<<<< HEAD
-=======
-        <group/>
->>>>>>> kutgitteringtyfus
-=======
-        <group name="Inf-B_ProjectFullHouse"/>
->>>>>>> 7e7c7214113a853d7d8b3bbd670093842611d32d
     </open-files>
 </project-private>
