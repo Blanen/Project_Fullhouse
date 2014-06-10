@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
-
+import java.util.*;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -26,6 +26,7 @@ public class SpelerTab extends javax.swing.JPanel {
     public SpelerTab() {
         initComponents();
         showLijstSpelers();
+        showLijstToernooien();
     }
 
     /**
@@ -37,14 +38,15 @@ public class SpelerTab extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFrame2 = new javax.swing.JFrame();
+        spelerToernooiFrame = new javax.swing.JFrame();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jList5 = new javax.swing.JList();
+        lijstToernooien = new javax.swing.JList();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
-        jTextField19 = new javax.swing.JTextField();
+        zoekDatum = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         lijstSpelers = new javax.swing.JList();
         jLabel1 = new javax.swing.JLabel();
@@ -83,58 +85,73 @@ public class SpelerTab extends javax.swing.JPanel {
         text3 = new javax.swing.JTextField();
         spelerVerwijderButton = new javax.swing.JButton();
 
-        jList5.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "1-1-2001", "2-2-2002" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane6.setViewportView(jList5);
+        jScrollPane6.setViewportView(lijstToernooien);
 
-        jLabel19.setText("Datum");
+        jLabel19.setText("Zoek op datum:");
 
-        jLabel20.setText("Plaats");
+        jLabel20.setText("Zoek op plaats:");
 
         jButton10.setText("Schrijf speler in");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
-        jTextField19.setEditable(false);
+        zoekDatum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                zoekDatumActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jFrame2Layout = new javax.swing.GroupLayout(jFrame2.getContentPane());
-        jFrame2.getContentPane().setLayout(jFrame2Layout);
-        jFrame2Layout.setHorizontalGroup(
-            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrame2Layout.createSequentialGroup()
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout spelerToernooiFrameLayout = new javax.swing.GroupLayout(spelerToernooiFrame.getContentPane());
+        spelerToernooiFrame.getContentPane().setLayout(spelerToernooiFrameLayout);
+        spelerToernooiFrameLayout.setHorizontalGroup(
+            spelerToernooiFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(spelerToernooiFrameLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(spelerToernooiFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
-                    .addGroup(jFrame2Layout.createSequentialGroup()
-                        .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel21))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jFrame2Layout.createSequentialGroup()
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField19)))
+                    .addGroup(spelerToernooiFrameLayout.createSequentialGroup()
+                        .addGroup(spelerToernooiFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(spelerToernooiFrameLayout.createSequentialGroup()
+                                .addComponent(jLabel20)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField2))
+                            .addComponent(jLabel21)
+                            .addGroup(spelerToernooiFrameLayout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addGap(18, 18, 18)
+                                .addComponent(zoekDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jFrame2Layout.setVerticalGroup(
-            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrame2Layout.createSequentialGroup()
+        spelerToernooiFrameLayout.setVerticalGroup(
+            spelerToernooiFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(spelerToernooiFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jFrame2Layout.createSequentialGroup()
-                        .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(spelerToernooiFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(spelerToernooiFrameLayout.createSequentialGroup()
+                        .addGroup(spelerToernooiFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel19)
-                            .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(zoekDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel20)
+                        .addGroup(spelerToernooiFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel21)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 191, Short.MAX_VALUE))
+                        .addGap(0, 185, Short.MAX_VALUE))
                     .addComponent(jScrollPane6))
                 .addContainerGap())
         );
@@ -448,9 +465,9 @@ public class SpelerTab extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void spelerSchrijfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerSchrijfButtonActionPerformed
-        // TODO add your handling code here:
-        jFrame2.setVisible(true);
-        jFrame2.setSize(400, 300);
+       
+        spelerToernooiFrame.setVisible(true);
+        spelerToernooiFrame.setSize(400, 300);
     }//GEN-LAST:event_spelerSchrijfButtonActionPerformed
 
     private void spelerVoegButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerVoegButtonActionPerformed
@@ -469,7 +486,88 @@ public class SpelerTab extends javax.swing.JPanel {
 
     }//GEN-LAST:event_spelerPlaatsFieldActionPerformed
 
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+       inschrijvenSpeler(); 
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void zoekDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zoekDatumActionPerformed
+        try{
+        
+            Connection conn= FullHouseDatabase.getConnection();
+            String query= "SELECT * FROM toernooi join event on event_nr=toernooi_nr where toernooi_nr not in(select masterclass_nr from masterclass) and datum like ?";
+            PreparedStatement stat= conn.prepareStatement(query);
+            Date datum= new Date(zoekDatum.getText());
+            java.sql.Date convertedDatum= new java.sql.Date(datum.getTime());
+            stat.setDate(1, convertedDatum );
+            ResultSet result= stat.executeQuery();
+            DefaultListModel dflm= new DefaultListModel();
+            
+            while(result.next())
+            {
+                Toernooi toernooi= new Toernooi(result.getInt("toernooi_nr"));
+                dflm.addElement(toernooi);
+            }
+            
+            lijstToernooien.setModel(dflm);
+            
+            
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_zoekDatumActionPerformed
+
+   private void inschrijvenSpeler()
+   {
+    try{
+    Speler selectedSpeler= (Speler)lijstSpelers.getSelectedValue();
+    Toernooi selectedToernooi=(Toernooi)lijstToernooien.getSelectedValue();
+    Connection conn= FullHouseDatabase.getConnection();
+    String query= "INSERT into toernooi_inschrijving VALUES(?,?,?)";
+    PreparedStatement stat= conn.prepareStatement(query);
+    stat.setInt(1, selectedSpeler.getPNR());
+    stat.setInt(2, selectedToernooi.getEventNr());
+    stat.setString(3, null);
+    int effectedRecords=stat.executeUpdate();
+    System.out.println("Aantal toegevoegde records:" + effectedRecords);
     
+    }
+    catch(SQLException e)
+    {
+        System.out.println(e);
+    }
+   }
+   private void showLijstToernooien()
+   {
+       try{
+       Connection conn= FullHouseDatabase.getConnection();
+       String query= "SELECT * from toernooi join event on event_nr=toernooi_nr where event_nr not in(select masterclass_nr from masterclass) ";
+       PreparedStatement stat= conn.prepareStatement(query);
+           System.out.println(query);
+       ResultSet result=stat.executeQuery();
+       DefaultListModel dflm= new DefaultListModel();
+       while (result.next())
+       {
+        
+           dflm.addElement(new Toernooi(result.getInt("toernooi_nr")));
+                
+            }
+          lijstToernooien.setModel(dflm);  
+       }
+   
+     
+       
+      
+       catch(SQLException e)
+       {
+           System.out.println(e);
+       }
+   }
     private void fillZoekComboBox() {
         DefaultComboBoxModel dfcm = new DefaultComboBoxModel();
         String[] zoekopties = {"Toon alle spelers", "ID", "Postcode/Huisnummer", "Naam/Achternaam"};
@@ -711,7 +809,6 @@ public class SpelerTab extends javax.swing.JPanel {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JFrame jFrame2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel19;
@@ -727,11 +824,11 @@ public class SpelerTab extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList jList5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTextField jTextField19;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JList lijstSpelers;
+    private javax.swing.JList lijstToernooien;
     private javax.swing.JTextField spelerAchternaamField;
     private javax.swing.JTextField spelerEmailField;
     private javax.swing.JRadioButton spelerMasterclassButton;
@@ -744,6 +841,7 @@ public class SpelerTab extends javax.swing.JPanel {
     private javax.swing.JTextField spelerTelThuisField;
     private javax.swing.JTextField spelerThuisMobielField;
     private javax.swing.JRadioButton spelerToernooiButton;
+    private javax.swing.JFrame spelerToernooiFrame;
     private javax.swing.JTextField spelerTussenField;
     private javax.swing.JButton spelerVerwijderButton;
     private javax.swing.JButton spelerVoegButton;
@@ -752,5 +850,6 @@ public class SpelerTab extends javax.swing.JPanel {
     private javax.swing.JTextField text1;
     private javax.swing.JTextField text2;
     private javax.swing.JTextField text3;
+    private javax.swing.JTextField zoekDatum;
     // End of variables declaration//GEN-END:variables
 }
