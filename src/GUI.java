@@ -63,8 +63,8 @@ public class GUI extends javax.swing.JFrame {
                 jComboBox2 = new javax.swing.JComboBox();
                 docentenTab1 = new DocentenTab();
                 masterClassTab1 = new MasterClassTab();
-                spelerTab1 = new SpelerTab();
                 toernooiTab1 = new ToernooiTab();
+                spelerTab1 = new SpelerTab();
 
                 jLabel39.setText("jLabel39");
 
@@ -104,6 +104,11 @@ public class GUI extends javax.swing.JFrame {
                 jScrollPane7.setViewportView(jList6);
 
                 jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ronde 1", "Ronde 2", "Ronde 3" }));
+                jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                jComboBox2ActionPerformed(evt);
+                        }
+                });
 
                 javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
                 jPanel3.setLayout(jPanel3Layout);
@@ -176,8 +181,8 @@ public class GUI extends javax.swing.JFrame {
                 tabPane.addTab("Tafels", jPanel3);
                 tabPane.addTab("Docenten", docentenTab1);
                 tabPane.addTab("Masterclassen", masterClassTab1);
-                tabPane.addTab("Spelers", spelerTab1);
                 tabPane.addTab("Toernooien", toernooiTab1);
+                tabPane.addTab("Spelers", spelerTab1);
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
@@ -192,6 +197,10 @@ public class GUI extends javax.swing.JFrame {
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents
+
+        private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+                // TODO add your handling code here:
+        }//GEN-LAST:event_jComboBox2ActionPerformed
 
 
     /**

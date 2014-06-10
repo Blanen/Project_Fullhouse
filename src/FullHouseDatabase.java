@@ -6,9 +6,7 @@
 
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  *
@@ -17,8 +15,8 @@ import java.sql.SQLException;
 public class FullHouseDatabase {
     private static final String dbserver="localhost";
     private static final String database="fullhouse";
-    private static final String username="root";
-    private static final String password="root";
+    private static final String username="admin";
+    private static final String password="admin";
     private static Connection activeConnection;
     
     
@@ -43,8 +41,13 @@ public class FullHouseDatabase {
     }
     private static Connection createConnection() throws SQLException
     {
-        String connectionString="jdbc:mysql://" + dbserver + "/" + database + "?user=" + username + "&password=" + password;
-       
+	try{Class.forName("com.mysql.jdbc.Driver");
+	}
+	catch(Exception a){
+		System.out.println(a);
+	}
+        String connectionString="jdbc:mysql://" + dbserver + "/" + database	 + "?user=" + username + "&password=" + password;
+	DriverManager.registerDriver(new com.mysql.jdbc.Driver());
         return DriverManager.getConnection(connectionString);
     }
 }
