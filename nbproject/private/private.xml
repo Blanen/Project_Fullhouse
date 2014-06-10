@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/Users/Babita/OneDrive/Documents/Informatica/Blok%20B%20Databases/Git/Project_Fullhouse/src/projectgui/FullHouseDatabase.java</file>
             <file>file:/C:/Users/Babita/OneDrive/Documents/Informatica/Blok%20B%20Databases/Git/Project_Fullhouse/src/projectgui/Docent.java</file>
@@ -9,5 +10,8 @@
             <file>file:/C:/Users/Babita/OneDrive/Documents/Informatica/Blok%20B%20Databases/Git/Project_Fullhouse/src/projectgui/GUI.java</file>
             <file>file:/C:/Users/Babita/OneDrive/Documents/Informatica/Blok%20B%20Databases/Git/Project_Fullhouse/src/projectgui/Persoon.java</file>
         </group>
+=======
+        <group/>
+>>>>>>> kutgitteringtyfus
     </open-files>
 </project-private>
