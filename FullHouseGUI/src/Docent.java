@@ -55,6 +55,10 @@ public class Docent extends Persoon {
         this.rekening_nr = rnr;
     }
     
+    public int getRekening(){
+        return rekening_nr;
+    }
+    
     @Override
     public boolean existsInDB(){
         try{
