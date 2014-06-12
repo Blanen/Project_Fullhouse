@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class Docent extends Persoon {
 
-    private int rekening_nr;
+    private String rekening_nr;
 
     public Docent() {
 
@@ -21,13 +21,13 @@ public class Docent extends Persoon {
             String query = "SELECT * FROM docent where docent_nr =" + docent_nr + ";";
             ResultSet rs = stat.executeQuery(query);
             rs.next();
-            this.rekening_nr = rs.getInt("rekening_nr");
+            this.rekening_nr = rs.getString("rekening_nr");
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
 
-    public Docent(String voornaam, String tussenvoegsel, String achternaam, String straat, String huisnummer, String postcode, String woonplaats, String mobielNummer, String vastNummer, String email, int rekening_nr){
+    public Docent(String voornaam, String tussenvoegsel, String achternaam, String straat, String huisnummer, String postcode, String woonplaats, String mobielNummer, String vastNummer, String email, String rekening_nr){
         super(voornaam, tussenvoegsel, achternaam, straat, huisnummer, postcode,  woonplaats, mobielNummer, vastNummer, email);
         this.rekening_nr = rekening_nr;
     }
@@ -51,11 +51,11 @@ public class Docent extends Persoon {
         return kolomnamen;
     }
 
-    public void setRekening(int rnr) {
+    public void setRekening(String rnr) {
         this.rekening_nr = rnr;
     }
     
-    public int getRekening(){
+    public String getRekening(){
         return rekening_nr;
     }
     
@@ -86,7 +86,7 @@ public class Docent extends Persoon {
             }
             try{
                 PreparedStatement stat = FullHouseDatabase.getConnection().prepareStatement(query);
-                stat.setInt(1, rekening_nr);
+                stat.setString(1, rekening_nr);
                 stat.setInt(2, getPNR());
                 stat.executeUpdate();
             }catch(SQLException e){

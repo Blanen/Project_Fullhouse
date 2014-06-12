@@ -839,7 +839,7 @@ public class SpelerTab extends javax.swing.JPanel {
     private void inschrijvenSpelerMasterclass()
     {
         Speler selectedSpeler = (Speler) lijstSpelers.getSelectedValue();
-        MasterClass selectedMasterclass = (MasterClass) lijstToernooien.getSelectedValue();
+        MasterClass selectedMasterclass = (MasterClass) lijstMasterclassen.getSelectedValue();
         int aantal_inschrijvingen = 0;
         int max_inschrijvingen = 0;
         try {
@@ -853,8 +853,8 @@ public class SpelerTab extends javax.swing.JPanel {
             PreparedStatement stat = conn.prepareStatement(query);
             PreparedStatement stat2 = conn.prepareStatement(query2);
 
-            stat.setInt(1, selectedSpeler.getPNR());
-            stat.setInt(2, selectedMasterclass.getEventNr());
+            stat.setInt(1, selectedMasterclass.getEventNr());
+            stat.setInt(2, selectedSpeler.getPNR());
             stat.setString(3, null);
             
             stat2.setInt(1, selectedMasterclass.getEventNr());
@@ -874,6 +874,7 @@ public class SpelerTab extends javax.swing.JPanel {
 
         } catch (MySQLIntegrityConstraintViolationException e) {
             //Als de geselecteerde speler al ingeschreven staat voor de geselecteerde masterclass
+            System.out.println();
             JOptionPane.showMessageDialog(null, selectedSpeler + " is al ingeschreven voor " + selectedMasterclass, "Inschrijving niet mogelijk", JOptionPane.ERROR_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e, "Fout", JOptionPane.ERROR_MESSAGE);
@@ -901,7 +902,7 @@ public class SpelerTab extends javax.swing.JPanel {
     {
       try {
             Connection conn = FullHouseDatabase.getConnection();
-            String query = "SELECT * from masterclass join event on event_nr=masterclass_nr where masterclass_nr not in(select masterclass_nr from masterclass) ";
+            String query = "SELECT * from masterclass join event on event_nr=masterclass_nr where masterclass_nr not in(select toernooi_nr from toernooi) ";
             PreparedStatement stat = conn.prepareStatement(query);
             System.out.println(query);
             ResultSet result = stat.executeQuery();
