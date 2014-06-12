@@ -87,7 +87,7 @@ public abstract class Event {
     
     @Override
     public String toString(){
-        return this.getClass().getSimpleName() + "  " + getDatum() +"  "+ getPlaats();
+        return this.getClass().getSimpleName() + "  " + getDatum() +"  "+ getPlaats(); 
     }
 
     /**

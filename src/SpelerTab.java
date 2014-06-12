@@ -1,5 +1,5 @@
 
-import java.awt.event.ActionEvent;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -674,20 +674,54 @@ public class SpelerTab extends javax.swing.JPanel {
     }
 
     private void inschrijvenSpeler() {
+        Speler selectedSpeler = (Speler) lijstSpelers.getSelectedValue();
+        Toernooi selectedToernooi = (Toernooi) lijstToernooien.getSelectedValue();
+        int aantal_inschrijvingen = 0;
+            int max_inschrijvingen=0;
         try {
-            Speler selectedSpeler = (Speler) lijstSpelers.getSelectedValue();
-            Toernooi selectedToernooi = (Toernooi) lijstToernooien.getSelectedValue();
+            
             Connection conn = FullHouseDatabase.getConnection();
             String query = "INSERT into toernooi_inschrijving VALUES(?,?,?)";
+            String query2=  "select count(*) as aantal_inschr, max_inschrijvingen from event join toernooi on toernooi_nr=event_nr left "
+                        +   "join toernooi_inschrijving on toernooi_nr=toernooi "
+                         +  "where event_nr not in(select masterclass_nr from masterclass) and toernooi_nr=? ";
+            
+            
             PreparedStatement stat = conn.prepareStatement(query);
+            PreparedStatement stat2=conn.prepareStatement(query2);
+            
             stat.setInt(1, selectedSpeler.getPNR());
             stat.setInt(2, selectedToernooi.getEventNr());
             stat.setString(3, null);
-            int effectedRecords = stat.executeUpdate();
-            System.out.println("Aantal toegevoegde records:" + effectedRecords);
-            JOptionPane.showMessageDialog(null, selectedSpeler + " staat ingeschreven voor " +selectedToernooi, "Inschrijving voltooid", JOptionPane.INFORMATION_MESSAGE);
-        } catch (SQLException e) {
-            System.out.println(e);
+            stat2.setInt(1, selectedToernooi.getEventNr());
+           
+            ResultSet result= stat2.executeQuery();
+            
+            while(result.next())
+            {
+                aantal_inschrijvingen=result.getInt("aantal_inschr");
+                max_inschrijvingen=result.getInt("max_inschrijvingen");
+            }
+             if(aantal_inschrijvingen<max_inschrijvingen)
+            {
+            stat.executeUpdate();
+            JOptionPane.showMessageDialog(null, selectedSpeler + " staat nu ingeschreven voor " +selectedToernooi, "Inschrijving voltooid", JOptionPane.INFORMATION_MESSAGE);
+            }
+             else{
+                  JOptionPane.showMessageDialog(null, "Maximum inschrijvingen is bereikt","ERROR", JOptionPane.ERROR_MESSAGE);
+             }
+            
+            
+       
+            
+        } catch (MySQLIntegrityConstraintViolationException e) 
+        {
+             //Als de geselecteerde speler al ingeschreven staat voor de geselecteerde toernooi
+            JOptionPane.showMessageDialog(null, selectedSpeler + " is al ingeschreven voor " +selectedToernooi, "Inschrijving niet mogelijk", JOptionPane.ERROR_MESSAGE);
+        }
+        catch (SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e,"Fout", JOptionPane.ERROR_MESSAGE);
         }
     }
 
