@@ -137,7 +137,6 @@ public class ToernooiTab extends javax.swing.JPanel {
 
         jLabel7.setText("Plaats");
 
-        toernooiPlaatsField.setText("jTextField8");
         toernooiPlaatsField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 toernooiPlaatsFieldActionPerformed(evt);
@@ -146,19 +145,17 @@ public class ToernooiTab extends javax.swing.JPanel {
 
         jLabel8.setText("Datum");
 
-        toernooiDatumField.setText("jTextField11");
-
         jLabel11.setText("Tijd");
-
-        toernooiTijdField.setText("jTextField12");
 
         jLabel12.setText("Inschrijfgeld");
 
         jLabel13.setText("Rondes");
 
-        toernooiInschrijfgeldField.setText("jTextField13");
-
-        toernooiRondesField.setText("jTextField14");
+        toernooiInschrijfgeldField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toernooiInschrijfgeldFieldActionPerformed(evt);
+            }
+        });
 
         toernooiInschrijvingenButton.setText("Lijst met spelers en hun inschrijfstatus");
         toernooiInschrijvingenButton.addActionListener(new java.awt.event.ActionListener() {
@@ -287,6 +284,10 @@ public class ToernooiTab extends javax.swing.JPanel {
             ((DefaultListModel) toernooiList.getModel()).addElement(toernooi);
         }
     }//GEN-LAST:event_toernooiToevoegButtonActionPerformed
+
+    private void toernooiInschrijfgeldFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toernooiInschrijfgeldFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_toernooiInschrijfgeldFieldActionPerformed
 
     private void fillToernooiFields(Toernooi toernooi) {
         toernooiPlaatsField.setText(toernooi.getPlaats());
