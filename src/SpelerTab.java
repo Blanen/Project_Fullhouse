@@ -31,7 +31,6 @@ public class SpelerTab extends javax.swing.JPanel {
        
         toonLijstSpelers();
         toonLijstToernooien();
-        toonLijstMasterclassen();
         vulZoekComboBox();
 
         spelerWijzigButton.setEnabled(false);
@@ -540,11 +539,12 @@ public class SpelerTab extends javax.swing.JPanel {
                             .addComponent(spelerToernooiButton)
                             .addComponent(spelerMasterclassButton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(zoekComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2)
-                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(text1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(zoekComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton2)
+                                .addComponent(text1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(text2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -554,9 +554,7 @@ public class SpelerTab extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(text3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 27, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
@@ -697,7 +695,7 @@ public class SpelerTab extends javax.swing.JPanel {
     }//GEN-LAST:event_resetActionPerformed
 
     private void inschrijvenMasterclassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inschrijvenMasterclassButtonActionPerformed
-        inschrijvenSpelerMasterclass();
+        
     }//GEN-LAST:event_inschrijvenMasterclassButtonActionPerformed
 
     private void zoekDatumMasterclassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zoekDatumMasterclassActionPerformed
@@ -809,50 +807,50 @@ public class SpelerTab extends javax.swing.JPanel {
     }
    
     //Een speler kan ingeschreven worden in een masterclass mits hij niet al ingeschreven staat voor de geselecteerde masterclass
-    private void inschrijvenSpelerMasterclass()
-    {
-        Speler selectedSpeler = (Speler) lijstSpelers.getSelectedValue();
-        MasterClass selectedMasterclass = (MasterClass) lijstMasterclassen.getSelectedValue();
-        int aantal_inschrijvingen = 0;
-        int max_inschrijvingen = 0;
-        try {
-
-            Connection conn = FullHouseDatabase.getConnection();
-            String query =  "INSERT into masterclass_inschrijving VALUES(?,?,?)";
-            String query2 = "select count(*) as aantal_inschr, max_inschrijvingen from event join masterclass on masterclass_nr=event_nr left "
-                            + "join masterclass_inschrijving on masterclass_nr=masterclass "
-                            + "where event_nr not in(select toernooi_nr from toernooi) and masterclass_nr=? ";
-
-            PreparedStatement stat = conn.prepareStatement(query);
-            PreparedStatement stat2 = conn.prepareStatement(query2);
-
-            stat.setInt(1, selectedMasterclass.getEventNr());
-            stat.setInt(2, selectedSpeler.getPNR());
-            stat.setString(3, null);
-            
-            stat2.setInt(1, selectedMasterclass.getEventNr());
-
-            ResultSet result = stat2.executeQuery();
-
-            while (result.next()) {
-                aantal_inschrijvingen = result.getInt("aantal_inschr");
-                max_inschrijvingen = result.getInt("max_inschrijvingen");
-            }
-            if (aantal_inschrijvingen < max_inschrijvingen) {
-                stat.executeUpdate();
-                JOptionPane.showMessageDialog(null, selectedSpeler + " staat nu ingeschreven voor " + selectedMasterclass, "Inschrijving voltooid", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Maximum inschrijvingen is bereikt", "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-
-        } catch (MySQLIntegrityConstraintViolationException e) {
-            //Als de geselecteerde speler al ingeschreven staat voor de geselecteerde masterclass
-  
-            JOptionPane.showMessageDialog(null, selectedSpeler + " is al ingeschreven voor " + selectedMasterclass, "Inschrijving niet mogelijk", JOptionPane.ERROR_MESSAGE);
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e, "Fout", JOptionPane.ERROR_MESSAGE);
-        }    
-    }
+//    private void inschrijvenSpelerMasterclass()
+//    {
+//        Speler selectedSpeler = (Speler) lijstSpelers.getSelectedValue();
+//        MasterClass selectedMasterclass = (MasterClass) lijstMasterclassen.getSelectedValue();
+//        int aantal_inschrijvingen = 0;
+//        int max_inschrijvingen = 0;
+//        try {
+//
+//            Connection conn = FullHouseDatabase.getConnection();
+//            String query =  "INSERT into masterclass_inschrijving VALUES(?,?,?)";
+//            String query2 = "select count(*) as aantal_inschr, max_inschrijvingen from event join masterclass on masterclass_nr=event_nr left "
+//                            + "join masterclass_inschrijving on masterclass_nr=masterclass "
+//                            + "where event_nr not in(select toernooi_nr from toernooi) and masterclass_nr=? ";
+//
+//            PreparedStatement stat = conn.prepareStatement(query);
+//            PreparedStatement stat2 = conn.prepareStatement(query2);
+//
+//            stat.setInt(1, selectedMasterclass.getEventNr());
+//            stat.setInt(2, selectedSpeler.getPNR());
+//            stat.setString(3, null);
+//            
+//            stat2.setInt(1, selectedMasterclass.getEventNr());
+//
+//            ResultSet result = stat2.executeQuery();
+//
+//            while (result.next()) {
+//                aantal_inschrijvingen = result.getInt("aantal_inschr");
+//                max_inschrijvingen = result.getInt("max_inschrijvingen");
+//            }
+//            if (aantal_inschrijvingen < max_inschrijvingen) {
+//                stat.executeUpdate();
+//                JOptionPane.showMessageDialog(null, selectedSpeler + " staat nu ingeschreven voor " + selectedMasterclass, "Inschrijving voltooid", JOptionPane.INFORMATION_MESSAGE);
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Maximum inschrijvingen is bereikt", "ERROR", JOptionPane.ERROR_MESSAGE);
+//            }
+//
+//        } catch (MySQLIntegrityConstraintViolationException e) {
+//            //Als de geselecteerde speler al ingeschreven staat voor de geselecteerde masterclass
+//  
+//            JOptionPane.showMessageDialog(null, selectedSpeler + " is al ingeschreven voor " + selectedMasterclass, "Inschrijving niet mogelijk", JOptionPane.ERROR_MESSAGE);
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(null, e, "Fout", JOptionPane.ERROR_MESSAGE);
+//        }    
+//    }
     
    //Toon alle toernooien die in de database aanwezig zijn
     private void toonLijstToernooien() {
@@ -874,25 +872,25 @@ public class SpelerTab extends javax.swing.JPanel {
     }
    
     //Toon alle masterclassen die in de database aanwezig zijn
-    private void toonLijstMasterclassen()
-    {
-      try {
-            Connection conn = FullHouseDatabase.getConnection();
-            String query = "SELECT * from masterclass join event on event_nr=masterclass_nr where masterclass_nr not in(select toernooi_nr from toernooi) ";
-            PreparedStatement stat = conn.prepareStatement(query);
-            
-            ResultSet result = stat.executeQuery();
-            DefaultListModel dflm = new DefaultListModel();
-            while (result.next()) {
-
-                dflm.addElement(new MasterClass(result.getInt("masterclass_nr")));
-
-            }
-            lijstMasterclassen.setModel(dflm);
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e, "Fout", JOptionPane.ERROR_MESSAGE);
-        }  
-    }
+//    private void toonLijstMasterclassen()
+//    {
+//      try {
+//            Connection conn = FullHouseDatabase.getConnection();
+//            String query = "SELECT * from masterclass join event on event_nr=masterclass_nr where masterclass_nr not in(select toernooi_nr from toernooi) ";
+//            PreparedStatement stat = conn.prepareStatement(query);
+//            
+//            ResultSet result = stat.executeQuery();
+//            DefaultListModel dflm = new DefaultListModel();
+//            while (result.next()) {
+//
+//                dflm.addElement(new MasterClass(result.getInt("masterclass_nr")));
+//
+//            }
+//            lijstMasterclassen.setModel(dflm);
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(null, e, "Fout", JOptionPane.ERROR_MESSAGE);
+//        }  
+//    }
     
     //Vul de combobox met de verschillende zoekopties die de gebruiker op kan zoeken
     private void vulZoekComboBox() {
