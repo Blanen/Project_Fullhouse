@@ -44,7 +44,6 @@ public class DocentenTab extends javax.swing.JPanel {
         docentVoornaamField = new javax.swing.JTextField();
         docentStraatField = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
-        docentVerwijderButton = new javax.swing.JButton();
         jLabel37 = new javax.swing.JLabel();
         docentPostcodeField = new javax.swing.JTextField();
         docentAchternaamField = new javax.swing.JTextField();
@@ -92,8 +91,6 @@ public class DocentenTab extends javax.swing.JPanel {
         jLabel33.setText("Voornaam");
 
         jLabel36.setText("Telefoon - Mobiel");
-
-        docentVerwijderButton.setText("Verwijder");
 
         jLabel37.setText("Email");
 
@@ -165,22 +162,20 @@ public class DocentenTab extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel34)
-                            .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(docentPostcodeField))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel40)
+                            .addComponent(docentPostcodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel43, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                             .addComponent(docentHuisnummerField))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel44)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(docentPlaatsField)
-                                .addContainerGap())))
+                            .addComponent(docentPlaatsField)))
                     .addComponent(docentVastField)
                     .addComponent(docentMobielField)
                     .addComponent(docentEmailField)
@@ -200,32 +195,30 @@ public class DocentenTab extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel42)
-                                        .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGap(0, 183, Short.MAX_VALUE))
                                     .addComponent(docentAchternaamField)))
-                            .addComponent(docentStraatField, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(docentWijzigButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(docentVerwijderButton)
-                                .addGap(18, 18, 18)
                                 .addComponent(docentToevoegButton))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(docentZoekButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(docentZoekCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(docentZoekField1)
-                                    .addComponent(docentZoekField2)
-                                    .addComponent(docentZoekField3)))
-                            .addComponent(docentRekeningField)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(docentZoekButton)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(docentZoekCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(docentZoekField3, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                                            .addComponent(docentZoekField2)
+                                            .addComponent(docentZoekField1)))
                                     .addComponent(jLabel35)
                                     .addComponent(jLabel36)
                                     .addComponent(jLabel37)
                                     .addComponent(jLabel38))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(docentStraatField)
+                            .addComponent(docentRekeningField))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -276,8 +269,7 @@ public class DocentenTab extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(docentWijzigButton)
-                            .addComponent(docentToevoegButton)
-                            .addComponent(docentVerwijderButton))
+                            .addComponent(docentToevoegButton))
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(docentZoekCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -316,7 +308,7 @@ public class DocentenTab extends javax.swing.JPanel {
     }//GEN-LAST:event_docentPlaatsFieldActionPerformed
 
     private void docentWijzigButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docentWijzigButtonActionPerformed
-        // TODO add your handling code here:
+        wijzigenDocent();
     }//GEN-LAST:event_docentWijzigButtonActionPerformed
 
     private void docentZoekButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docentZoekButtonActionPerformed
@@ -328,7 +320,7 @@ public class DocentenTab extends javax.swing.JPanel {
     }//GEN-LAST:event_docentZoekComboActionPerformed
 
     private void docentToevoegButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docentToevoegButtonActionPerformed
-
+        toevoegenDocent();
     }//GEN-LAST:event_docentToevoegButtonActionPerformed
 
     private void fillDocentFields(Docent docent) {
@@ -342,7 +334,7 @@ public class DocentenTab extends javax.swing.JPanel {
         docentEmailField.setText(docent.getEmail());
         docentVastField.setText(docent.getVNR());
         docentMobielField.setText(docent.getMNR());
-        docentRekeningField.setText(Integer.toString(docent.getRekening()));
+        docentRekeningField.setText((docent.getRekening()));
     }
 
     private ArrayList<Docent> getDocenten() {
@@ -372,7 +364,7 @@ public class DocentenTab extends javax.swing.JPanel {
                 selectedDocent.setNaam(docentVoornaamField.getText(), docentTussenVoegselField.getText(), docentAchternaamField.getText());
                 selectedDocent.setContactGegevens(docentVastField.getText(), docentMobielField.getText(), docentEmailField.getText());
                 try {
-                    int rekening = Integer.parseInt(docentRekeningField.getText());
+                    String rekening = docentRekeningField.getText();
                     selectedDocent.setRekening(rekening);
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(this, "Rekening moet een getal zijn!");
@@ -396,10 +388,10 @@ public class DocentenTab extends javax.swing.JPanel {
         String mobiel = docentMobielField.getText();
         String vast = docentVastField.getText();
         String email = docentEmailField.getText();
-        int rekening = 0;
+        String rekening = "";
         boolean valid = true;
         try {
-            rekening = Integer.parseInt(docentRekeningField.getText());
+            rekening = docentRekeningField.getText();
         } catch (NumberFormatException e) {
             System.out.println(e);
             valid = false;
@@ -433,7 +425,6 @@ public class DocentenTab extends javax.swing.JPanel {
     private javax.swing.JButton docentToevoegButton;
     private javax.swing.JTextField docentTussenVoegselField;
     private javax.swing.JTextField docentVastField;
-    private javax.swing.JButton docentVerwijderButton;
     private javax.swing.JTextField docentVoornaamField;
     private javax.swing.JButton docentWijzigButton;
     private javax.swing.JButton docentZoekButton;

@@ -22,26 +22,23 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel34" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel40" alignment="0" max="32767" attributes="0"/>
-                          <Component id="docentPostcodeField" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel43" alignment="0" max="32767" attributes="0"/>
-                          <Component id="docentHuisnummerField" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel34" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel40" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="docentPostcodeField" min="-2" pref="77" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel43" pref="34" max="32767" attributes="0"/>
+                          <Component id="docentHuisnummerField" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="docentPlaatsField" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="docentPlaatsField" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="docentVastField" alignment="0" max="32767" attributes="0"/>
@@ -66,33 +63,29 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="183" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="docentAchternaamField" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="docentStraatField" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="docentWijzigButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="docentVerwijderButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="docentToevoegButton" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="docentZoekButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="docentZoekCombo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="docentZoekField1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="docentZoekField2" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="docentZoekField3" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="docentRekeningField" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="docentZoekButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="docentZoekCombo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="docentZoekField3" pref="139" max="32767" attributes="0"/>
+                                          <Component id="docentZoekField2" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="docentZoekField1" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
                                   <Component id="jLabel35" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel36" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel37" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -100,6 +93,8 @@
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="docentStraatField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="docentRekeningField" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -160,7 +155,6 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="docentWijzigButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="docentToevoegButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="docentVerwijderButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -230,11 +224,6 @@
     <Component class="javax.swing.JLabel" name="jLabel36">
       <Properties>
         <Property name="text" type="java.lang.String" value="Telefoon - Mobiel"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="docentVerwijderButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Verwijder"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel37">

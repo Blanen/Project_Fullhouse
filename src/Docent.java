@@ -99,8 +99,5 @@ public class Docent extends Persoon {
         }
     }
 
-    @Override
-    public String toString() {
-        return getVoornaam() + " " + getTussenvoegsel() + " " + getAchternaam() + ", " + getEmail();
-    }
+    
 }

@@ -178,5 +178,15 @@ public class Persoon {
         return true;
 
     }
-
+@Override
+public String toString(){
+    
+    if(getTussenvoegsel()!=null)
+    {
+    return getVoornaam()+" "+getTussenvoegsel()+" "+getAchternaam();
+}
+    else{
+        return getVoornaam()+" "+getAchternaam();
+    }
+}
 }
