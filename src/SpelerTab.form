@@ -12,7 +12,6 @@
                   <Component id="jScrollPane6" min="-2" pref="235" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
                       <Component id="inschrijvenToernooiButton" alignment="0" pref="322" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -27,27 +26,12 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="zoekDatum" min="-2" pref="196" max="-2" attributes="0"/>
                               </Group>
-=======
-                      <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel20" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="zoekDatum" pref="136" max="32767" attributes="0"/>
-                              <Component id="zoekPlaats" max="32767" attributes="0"/>
->>>>>>> a34443fe044bace47dba700d086473cb2de6c19c
-                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-<<<<<<< HEAD
                       <Component id="reset" max="32767" attributes="0"/>
-=======
-                      <Component id="jButton10" min="-2" pref="126" max="-2" attributes="0"/>
->>>>>>> a34443fe044bace47dba700d086473cb2de6c19c
                   </Group>
-                  <EmptySpace pref="26" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -69,15 +53,10 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-<<<<<<< HEAD
                           <Component id="inschrijvenToernooiButton" min="-2" pref="72" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="reset" min="-2" pref="73" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="106" max="32767" attributes="0"/>
-=======
-                          <Component id="jButton10" min="-2" pref="72" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="233" max="32767" attributes="0"/>
->>>>>>> a34443fe044bace47dba700d086473cb2de6c19c
                       </Group>
                       <Component id="jScrollPane6" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -105,7 +84,7 @@
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel19">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Zoek op datum (dd/mm/yyyy):"/>
+            <Property name="text" type="java.lang.String" value="Zoek op datum:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel20">
@@ -129,7 +108,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="zoekPlaats">
-<<<<<<< HEAD
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="zoekPlaatsActionPerformed"/>
             <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="zoekPlaatsInputMethodTextChanged"/>
@@ -141,10 +119,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resetActionPerformed"/>
-=======
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="zoekPlaatsActionPerformed"/>
->>>>>>> a34443fe044bace47dba700d086473cb2de6c19c
           </Events>
         </Component>
       </SubComponents>
@@ -228,7 +202,6 @@
                           </Group>
                           <Component id="spelerStraatField" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-<<<<<<< HEAD
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
@@ -255,20 +228,6 @@
                                           </Group>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-=======
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="spelerRatingField" min="-2" pref="113" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="gewonnengeld" min="-2" pref="134" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="spelerSchrijfButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="spelerToernooiRB" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="spelerMasterclassButton" min="-2" max="-2" attributes="0"/>
->>>>>>> a34443fe044bace47dba700d086473cb2de6c19c
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -295,51 +254,12 @@
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-<<<<<<< HEAD
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="spelerWijzigButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="spelerVerwijderButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="spelerVoegButton" min="-2" max="-2" attributes="0"/>
-=======
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="zoekComboBox" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="text2" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="text3" alignment="0" max="32767" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="text1" min="-2" pref="109" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="spelerWijzigButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="spelerVerwijderButton" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="spelerVoegButton" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Component id="label1" alignment="0" min="-2" pref="137" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="label3" alignment="1" min="-2" pref="137" max="-2" attributes="0"/>
-                                              <Component id="label2" min="-2" pref="147" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
->>>>>>> a34443fe044bace47dba700d086473cb2de6c19c
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -403,7 +323,6 @@
                           <Component id="gewonnengeld" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="spelerRatingField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-<<<<<<< HEAD
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="spelerWijzigButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -434,42 +353,6 @@
                           <Component id="text3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="21" max="32767" attributes="0"/>
-=======
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="spelerWijzigButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="spelerVoegButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="spelerVerwijderButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="spelerSchrijfButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="spelerToernooiRB" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="spelerMasterclassButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="zoekComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="text1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="label1" min="-2" pref="23" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                              <Component id="text2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="label2" min="-2" pref="20" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="text3" min="-2" max="-2" attributes="0"/>
-                          <Component id="label3" min="-2" pref="21" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="7" max="32767" attributes="0"/>
->>>>>>> a34443fe044bace47dba700d086473cb2de6c19c
                   </Group>
                   <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
               </Group>
@@ -555,9 +438,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="text1">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text1ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
@@ -600,7 +480,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="spelerSchrijfButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="spelerToernooiRB">
+    <Component class="javax.swing.JRadioButton" name="spelerToernooiButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Toernooi"/>
       </Properties>
