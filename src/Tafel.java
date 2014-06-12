@@ -26,4 +26,6 @@ public class Tafel {
     public void writeToDB() {
 
     }
+    
+    
 }
