@@ -32,6 +32,8 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+         
+       
     }
 
     /**
@@ -46,6 +48,7 @@ public class GUI extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel39 = new javax.swing.JLabel();
         tabPane = new javax.swing.JTabbedPane();
+        docentenTab1 = new DocentenTab();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList();
@@ -61,15 +64,16 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         jList6 = new javax.swing.JList();
         jComboBox2 = new javax.swing.JComboBox();
-        docentenTab = new DocentenTab();
-        toernooiTab = new ToernooiTab();
-        masterClassTab = new MasterClassTab();
-        spelerTab = new SpelerTab();
+        spelerTab1 = new SpelerTab();
+        masterClassTab1 = new MasterClassTab();
+        toernooiTab1 = new ToernooiTab();
 
         jLabel39.setText("jLabel39");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 255));
+
+        tabPane.addTab("Docenten", docentenTab1);
 
         jList3.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Tafel1", "Tafel2", "Tafel3" };
@@ -95,6 +99,11 @@ public class GUI extends javax.swing.JFrame {
         jTextField18.setText("jTextField18");
 
         jButton6.setText("Verloren");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jList6.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "313, Jan", "832, Henk" };
@@ -116,7 +125,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 86, Short.MAX_VALUE))
+                        .addGap(26, 363, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -170,20 +179,19 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton6)
-                        .addContainerGap(83, Short.MAX_VALUE))))
+                        .addContainerGap(87, Short.MAX_VALUE))))
         );
 
         tabPane.addTab("Tafels", jPanel3);
-        tabPane.addTab("Docenten", docentenTab);
-        tabPane.addTab("Toernooien", toernooiTab);
-        tabPane.addTab("Masterclasses", masterClassTab);
-        tabPane.addTab("Spelers", spelerTab);
+        tabPane.addTab("Spelers", spelerTab1);
+        tabPane.addTab("Masterclassen", masterClassTab1);
+        tabPane.addTab("Toernooien", toernooiTab1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabPane)
+            .addComponent(tabPane, javax.swing.GroupLayout.DEFAULT_SIZE, 842, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,6 +200,10 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
 
 
     /**
@@ -236,7 +248,7 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private DocentenTab docentenTab;
+    private DocentenTab docentenTab1;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel15;
@@ -253,10 +265,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
-    private MasterClassTab masterClassTab;
-    private SpelerTab spelerTab;
+    private MasterClassTab masterClassTab1;
+    private SpelerTab spelerTab1;
     private javax.swing.JTabbedPane tabPane;
-    private ToernooiTab toernooiTab;
+    private ToernooiTab toernooiTab1;
     // End of variables declaration//GEN-END:variables
 
 }

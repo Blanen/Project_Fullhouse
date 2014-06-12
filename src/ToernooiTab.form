@@ -228,9 +228,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="toernooiPlaatsField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField8"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="toernooiPlaatsFieldActionPerformed"/>
       </Events>
@@ -241,9 +238,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="toernooiDatumField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField11"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
@@ -251,9 +245,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="toernooiTijdField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField12"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel12">
       <Properties>
@@ -266,14 +257,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="toernooiInschrijfgeldField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField13"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="toernooiInschrijfgeldFieldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="toernooiRondesField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField14"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="toernooiInschrijvingenButton">
       <Properties>

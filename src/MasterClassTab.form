@@ -174,9 +174,6 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="masterclassTijdField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField12"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel30">
       <Properties>
@@ -184,9 +181,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="masterclassDatumField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField11"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel29">
       <Properties>
@@ -194,14 +188,8 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="masterclassMinRatingField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField14"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="masterclassInschrijfgeldField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField13"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel31">
       <Properties>
@@ -209,9 +197,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="masterclassPlaatsField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField8"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="masterclassPlaatsFieldActionPerformed"/>
       </Events>
@@ -285,7 +270,6 @@
     <Component class="javax.swing.JTextField" name="masterclassDocentField">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
     </Component>
   </SubComponents>
