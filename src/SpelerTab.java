@@ -760,6 +760,50 @@ public class SpelerTab extends javax.swing.JPanel {
         }
     }
     
+    private void zoekMasterclassOpDatum() {
+        try {
+
+            Connection conn = FullHouseDatabase.getConnection();
+            String query = "SELECT * FROM masterclass join event on event_nr=masterclass_nr where masterclass_nr not in(select masterclass_nr from masterclass) and datum like ?";
+            PreparedStatement stat = conn.prepareStatement(query);
+            Date datum = new Date(zoekDatum.getText() + "%'");
+            java.sql.Date convertedDatum = new java.sql.Date(datum.getTime());
+            stat.setDate(1, convertedDatum);
+            ResultSet result = stat.executeQuery();
+            DefaultListModel dflm = new DefaultListModel();
+
+            while (result.next()) {
+                MasterClass masterclass = new MasterClass(result.getInt("masterclass_nr"));
+                dflm.addElement(masterclass);
+            }
+
+            lijstMasterclassen.setModel(dflm);
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e, "Fout", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    private void zoekMasterclassOpPlaats() {
+        try {
+            Connection conn = FullHouseDatabase.getConnection();
+            String query = "SELECT * FROM masterclass join event on event_nr=masterclass_nr where masterclass_nr not in(select masterclass_nr from masterclass) and plaats like ?";
+            PreparedStatement stat = conn.prepareStatement(query);
+            stat.setString(1, zoekPlaats.getText() + "%");
+            ResultSet result = stat.executeQuery();
+            DefaultListModel dflm = new DefaultListModel();
+
+            while (result.next()) {
+                MasterClass masterclass = new MasterClass(result.getInt("masterclass_nr"));
+                dflm.addElement(masterclass);
+            }
+
+            lijstMasterclassen.setModel(dflm);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e, "Fout", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     //De doorgegeven JTextField wordt leeggehaald
     private void clearText(JTextField text) {
         text.setText("");
