@@ -319,7 +319,7 @@ public class MasterClassTab extends javax.swing.JPanel {
         String max_spelersStr = "100";
 
         Date datum = null;
-        int minRating = 0;
+        double minRating = 0;
         int max_spelers = 0;
         double inschrijfGeld = 0;
 
@@ -332,7 +332,7 @@ public class MasterClassTab extends javax.swing.JPanel {
         } else {
             try {
                 inschrijfGeld = Double.parseDouble(inschrijfGeldStr);
-                minRating = Integer.parseInt(minRatingStr);
+                minRating = Double.parseDouble(minRatingStr);
                 max_spelers = Integer.parseInt(max_spelersStr);
                 datum = Date.valueOf(datumStr);
             } catch (NumberFormatException e) {
@@ -360,7 +360,7 @@ public class MasterClassTab extends javax.swing.JPanel {
         masterclassDatumField.setText(masterclass.getDatum().toString());
         masterclassInschrijfgeldField.setText(Double.toString(masterclass.getInschrijfGeld()));
         masterclassTijdField.setText(masterclass.getTijd());
-        masterclassMinRatingField.setText(Integer.toString(masterclass.getMinRating()));
+        masterclassMinRatingField.setText(Double.toString(masterclass.getMinRating()));
         masterclassDocentField.setText(masterclass.getDocent().toString());
         curDocent = masterclass.getDocent();
     }

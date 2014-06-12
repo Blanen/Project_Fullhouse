@@ -16,7 +16,7 @@ import java.sql.Date;
  */
 public class MasterClass extends Event {
 
-    private int min_rating;
+    private double min_rating;
     private Docent docent;
 
     public MasterClass(String plaats, Date datum, String tijd, double inschrijfGeld, int max_inschrijvingen, int min_rating, Docent docent) {
@@ -34,7 +34,7 @@ public class MasterClass extends Event {
             Statement stat = conn.createStatement();
             result = stat.executeQuery(query);
             result.next();
-            min_rating = result.getInt("min_rating");
+            min_rating = result.getDouble("min_rating");
             docent = new Docent(result.getInt("docent"));
         } catch (SQLException e) {
             System.out.println(e);
@@ -77,11 +77,11 @@ public class MasterClass extends Event {
         }
     }
     
-    public void setMinRating(int minRating){
+    public void setMinRating(double minRating){
         min_rating = minRating;
     }
     
-     public int getMinRating(){
+     public double getMinRating(){
         return min_rating;
     }
 
