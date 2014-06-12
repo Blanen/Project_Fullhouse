@@ -713,7 +713,7 @@ public class SpelerTab extends javax.swing.JPanel {
     }//GEN-LAST:event_zoekPlaatsMasterclassInputMethodTextChanged
 
     private void resetMasterclassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetMasterclassActionPerformed
-       
+	    toonLijstMasterclassen();
     }//GEN-LAST:event_resetMasterclassActionPerformed
      
     private void zoekToernooiOpDatum() {
