@@ -584,21 +584,15 @@ public class SpelerTab extends javax.swing.JPanel {
             spelerVerwijderButton.setEnabled(false);
             spelerSchrijfButton.setEnabled(false);
             resetSpelerTextFields();
-        } else {
+            
+        } 
+        else {
             Speler selectedSpeler = (Speler) lijstSpelers.getSelectedValue();
             spelerWijzigButton.setEnabled(true);
             spelerVoegButton.setEnabled(false);
             spelerSchrijfButton.setEnabled(true);
             spelerVerwijderButton.setEnabled(true);
             spelerSchrijfButton.setEnabled(true);
-
-            StringBuilder sb = new StringBuilder();
-            sb.append(selectedSpeler.getRating());
-            String rating = sb.toString();
-            StringBuilder sb2 = new StringBuilder();
-            sb2.append(selectedSpeler.getGeld());
-            String gg = sb2.toString();
-
             spelerVoornaamField.setText(selectedSpeler.getVoornaam());
             spelerTussenField.setText(selectedSpeler.getTussenvoegsel());
             spelerAchternaamField.setText(selectedSpeler.getAchternaam());
@@ -609,9 +603,8 @@ public class SpelerTab extends javax.swing.JPanel {
             spelerTelThuisField.setText(selectedSpeler.getVNR());
             spelerThuisMobielField.setText(selectedSpeler.getMNR());
             spelerEmailField.setText(selectedSpeler.getEmail());
-
-            spelerRatingField.setText(rating);
-            gewonnengeld.setText(gg);
+            spelerRatingField.setText(Double.toString(selectedSpeler.getRating()));
+            gewonnengeld.setText(Double.toString(selectedSpeler.getGeld()));
         }
     }//GEN-LAST:event_lijstSpelersValueChanged
 
@@ -761,7 +754,7 @@ public class SpelerTab extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, e, "Fout", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+    
     private void zoekToernooiOpPlaats() {
         try {
             Connection conn = FullHouseDatabase.getConnection();
@@ -781,11 +774,13 @@ public class SpelerTab extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, e, "Fout", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+    
+    //De doorgegeven JTextField wordt leeggehaald
     private void clearText(JTextField text) {
         text.setText("");
     }
-
+    
+    //Een speler kan ingeschreven worden in een toernooi mits hij niet al ingeschreven staat voor de geselecteerde toernooi
     private void inschrijvenSpelerToernooi() {
         Speler selectedSpeler = (Speler) lijstSpelers.getSelectedValue();
         Toernooi selectedToernooi = (Toernooi) lijstToernooien.getSelectedValue();
@@ -827,6 +822,8 @@ public class SpelerTab extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, e, "Fout", JOptionPane.ERROR_MESSAGE);
         }
     }
+   
+    //Een speler kan ingeschreven worden in een masterclass mits hij niet al ingeschreven staat voor de geselecteerde masterclass
     private void inschrijvenSpelerMasterclass()
     {
         Speler selectedSpeler = (Speler) lijstSpelers.getSelectedValue();
@@ -871,6 +868,8 @@ public class SpelerTab extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, e, "Fout", JOptionPane.ERROR_MESSAGE);
         }    
     }
+    
+   //Toon alle toernooien die in de database aanwezig zijn
     private void toonLijstToernooien() {
         try {
             Connection conn = FullHouseDatabase.getConnection();
@@ -889,6 +888,8 @@ public class SpelerTab extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, e, "Fout", JOptionPane.ERROR_MESSAGE);
         }
     }
+   
+    //Toon alle masterclassen die in de database aanwezig zijn
     private void toonLijstMasterclassen()
     {
       try {
@@ -908,6 +909,8 @@ public class SpelerTab extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, e, "Fout", JOptionPane.ERROR_MESSAGE);
         }  
     }
+    
+    //Vul de combobox met de verschillende zoekopties die de gebruiker op kan zoeken
     private void vulZoekComboBox() {
         DefaultComboBoxModel dfcm = new DefaultComboBoxModel();
         String[] zoekopties = {"Toon alle spelers", "ID", "Postcode/Huisnummer", "Naam/Achternaam"};
@@ -917,7 +920,8 @@ public class SpelerTab extends javax.swing.JPanel {
         }
         zoekComboBox.setModel(dfcm);
     }
-
+    
+    //Zoek spelers op ID, Postcode/Huisnummer, Naam/Achternaam, 
     private void zoekSpelers() {
          String selectedItem = (String) zoekComboBox.getSelectedItem();
          String query = "";
