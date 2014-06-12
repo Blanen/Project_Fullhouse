@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.util.Random;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,6 +21,7 @@ public class Toernooi extends Event {
     private int tafelGrootte;
     private int rondes;
     private int huidigeRonde;
+    private Random randomGenerator = new Random();
     private ArrayList<Tafel> tafels = new ArrayList();
     private ArrayList<ToernooiInschrijving> inschrijvingen = new ArrayList();
 
@@ -69,15 +71,15 @@ public class Toernooi extends Event {
 	double aantalTafels = Math.pow(tafelGrootte/winnaars, Math.ceil(x));
 	
 	for(int i = 0; i< aantalTafels; i++){
-		tafels.add(new Tafel(toernooi, i, huidigeRonde));
+		tafels.add(new Tafel(this, i, huidigeRonde));
 	}
 
 	
-	while(inschr.size()>0){
+	while(inschrijvingen.size()>0){
 		for(Tafel tafel : tafels){
-			Speler speler = inschr.get(random);
-			tafel.addSpeler(speler);
-			inschr.remove(speler);
+			ToernooiInschrijving speler = inschrijvingen.get(randomGenerator.nextInt(inschrijvingen.size()));
+			tafel.addInschrijving(speler);
+			inschrijvingen.remove(speler);
 		}
 	}
 
