@@ -699,11 +699,11 @@ public class SpelerTab extends javax.swing.JPanel {
     }//GEN-LAST:event_inschrijvenMasterclassButtonActionPerformed
 
     private void zoekDatumMasterclassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zoekDatumMasterclassActionPerformed
-        
+	    zoekMasterclassOpDatum();
     }//GEN-LAST:event_zoekDatumMasterclassActionPerformed
 
     private void zoekPlaatsMasterclassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zoekPlaatsMasterclassActionPerformed
-       
+	    zoekMasterclassOpPlaats();
     }//GEN-LAST:event_zoekPlaatsMasterclassActionPerformed
 
     private void zoekPlaatsMasterclassInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_zoekPlaatsMasterclassInputMethodTextChanged
@@ -711,7 +711,7 @@ public class SpelerTab extends javax.swing.JPanel {
     }//GEN-LAST:event_zoekPlaatsMasterclassInputMethodTextChanged
 
     private void resetMasterclassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetMasterclassActionPerformed
-       
+	    toonLijstMasterclassen();
     }//GEN-LAST:event_resetMasterclassActionPerformed
      
     private void zoekToernooiOpDatum() {
@@ -753,6 +753,50 @@ public class SpelerTab extends javax.swing.JPanel {
             }
 
             lijstToernooien.setModel(dflm);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e, "Fout", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    private void zoekMasterclassOpDatum() {
+        try {
+
+            Connection conn = FullHouseDatabase.getConnection();
+            String query = "SELECT * FROM masterclass join event on event_nr=masterclass_nr where masterclass_nr not in(select masterclass_nr from masterclass) and datum like ?";
+            PreparedStatement stat = conn.prepareStatement(query);
+            Date datum = new Date(zoekDatum.getText() + "%'");
+            java.sql.Date convertedDatum = new java.sql.Date(datum.getTime());
+            stat.setDate(1, convertedDatum);
+            ResultSet result = stat.executeQuery();
+            DefaultListModel dflm = new DefaultListModel();
+
+            while (result.next()) {
+                MasterClass masterclass = new MasterClass(result.getInt("masterclass_nr"));
+                dflm.addElement(masterclass);
+            }
+
+            lijstMasterclassen.setModel(dflm);
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e, "Fout", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    private void zoekMasterclassOpPlaats() {
+        try {
+            Connection conn = FullHouseDatabase.getConnection();
+            String query = "SELECT * FROM masterclass join event on event_nr=masterclass_nr where masterclass_nr not in(select masterclass_nr from masterclass) and plaats like ?";
+            PreparedStatement stat = conn.prepareStatement(query);
+            stat.setString(1, zoekPlaats.getText() + "%");
+            ResultSet result = stat.executeQuery();
+            DefaultListModel dflm = new DefaultListModel();
+
+            while (result.next()) {
+                MasterClass masterclass = new MasterClass(result.getInt("masterclass_nr"));
+                dflm.addElement(masterclass);
+            }
+
+            lijstMasterclassen.setModel(dflm);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e, "Fout", JOptionPane.ERROR_MESSAGE);
         }
