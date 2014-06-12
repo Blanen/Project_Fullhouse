@@ -64,9 +64,10 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         jList6 = new javax.swing.JList();
         jComboBox2 = new javax.swing.JComboBox();
-        spelerTab1 = new SpelerTab();
         masterClassTab1 = new MasterClassTab();
         toernooiTab1 = new ToernooiTab();
+        spelerTab1 = new SpelerTab();
+        gaandeToernooienTab1 = new GaandeToernooienTab();
 
         jLabel39.setText("jLabel39");
 
@@ -125,7 +126,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 363, Short.MAX_VALUE))
+                        .addGap(26, 392, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -179,23 +180,24 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton6)
-                        .addContainerGap(87, Short.MAX_VALUE))))
+                        .addContainerGap(113, Short.MAX_VALUE))))
         );
 
         tabPane.addTab("Tafels", jPanel3);
-        tabPane.addTab("Spelers", spelerTab1);
         tabPane.addTab("Masterclassen", masterClassTab1);
         tabPane.addTab("Toernooien", toernooiTab1);
+        tabPane.addTab("Spelers", spelerTab1);
+        tabPane.addTab("Gaande Toernooien", gaandeToernooienTab1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabPane, javax.swing.GroupLayout.DEFAULT_SIZE, 842, Short.MAX_VALUE)
+            .addComponent(tabPane, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabPane)
+            .addComponent(tabPane, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
         );
 
         pack();
@@ -249,6 +251,7 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private DocentenTab docentenTab1;
+    private GaandeToernooienTab gaandeToernooienTab1;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel15;

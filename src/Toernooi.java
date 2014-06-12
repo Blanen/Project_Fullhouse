@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.util.Random;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,6 +20,8 @@ public class Toernooi extends Event {
 
     private int tafelGrootte;
     private int rondes;
+    private int huidigeRonde;
+    private Random randomGenerator = new Random();
     private ArrayList<Tafel> tafels = new ArrayList();
     private ArrayList<ToernooiInschrijving> inschrijvingen = new ArrayList();
 
@@ -43,6 +46,47 @@ public class Toernooi extends Event {
             System.out.println(e);
         }
     }
+    
+    public void maakIndeling(){
+	int aantalSpelers = inschrijvingen.size();
+	ArrayList<Tafel> tafels = new ArrayList();
+	
+        
+        try {
+            String query = "SELECT MAX(rondenummer) FROM tafel_indeling WHERE toernooi = toernooi.getEvent_nr;";
+            ResultSet result = FullHouseDatabase.getConnection().createStatement().executeQuery(query);
+            result.next();
+            huidigeRonde = 1 + result.getInt("rondenummer");
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        
+	//minAantalTafels == tafelgrootte/winnaars^x;
+	
+	int minAantalTafels = aantalSpelers/tafelGrootte;
+	int winnaars = 1;
+        
+	double x =  Math.log10(minAantalTafels)/Math.log10(tafelGrootte/winnaars); 
+
+	double aantalTafels = Math.pow(tafelGrootte/winnaars, Math.ceil(x));
+	
+	for(int i = 0; i< aantalTafels; i++){
+		tafels.add(new Tafel(this, i, huidigeRonde));
+	}
+
+	
+	while(inschrijvingen.size()>0){
+		for(Tafel tafel : tafels){
+			ToernooiInschrijving speler = inschrijvingen.get(randomGenerator.nextInt(inschrijvingen.size()));
+			tafel.addInschrijving(speler);
+			inschrijvingen.remove(speler);
+		}
+	}
+
+	for(Tafel tafel : tafels){
+		tafel.writeToDB();
+	}
+}
 
     @Override
     public boolean existsInDB() {

@@ -18,7 +18,7 @@ public class FullHouseDatabase {
     private static final String dbserver="localhost";
     private static final String database="fullhouse";
     private static final String username="root";
-    private static final String password="Devileggs95";
+    private static final String password="root";
     private static Connection activeConnection;
     
     
