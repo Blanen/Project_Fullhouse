@@ -701,11 +701,11 @@ public class SpelerTab extends javax.swing.JPanel {
     }//GEN-LAST:event_inschrijvenMasterclassButtonActionPerformed
 
     private void zoekDatumMasterclassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zoekDatumMasterclassActionPerformed
-        
+	    zoekMasterclassOpDatum();
     }//GEN-LAST:event_zoekDatumMasterclassActionPerformed
 
     private void zoekPlaatsMasterclassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zoekPlaatsMasterclassActionPerformed
-       
+	    zoekMasterclassOpPlaats();
     }//GEN-LAST:event_zoekPlaatsMasterclassActionPerformed
 
     private void zoekPlaatsMasterclassInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_zoekPlaatsMasterclassInputMethodTextChanged
