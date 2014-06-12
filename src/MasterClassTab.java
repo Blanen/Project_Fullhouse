@@ -89,21 +89,12 @@ public class MasterClassTab extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        masterclassTijdField.setText("jTextField12");
-
         jLabel30.setText("Inschrijfgeld");
-
-        masterclassDatumField.setText("jTextField11");
 
         jLabel29.setText("Tijd");
 
-        masterclassMinRatingField.setText("jTextField14");
-
-        masterclassInschrijfgeldField.setText("jTextField13");
-
         jLabel31.setText("Minimum Rating");
 
-        masterclassPlaatsField.setText("jTextField8");
         masterclassPlaatsField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 masterclassPlaatsFieldActionPerformed(evt);
@@ -152,7 +143,6 @@ public class MasterClassTab extends javax.swing.JPanel {
         });
 
         masterclassDocentField.setEditable(false);
-        masterclassDocentField.setText("jTextField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
