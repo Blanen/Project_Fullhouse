@@ -345,7 +345,7 @@ public class DocentenTab extends javax.swing.JPanel {
             Statement stat = conn.createStatement();
             ResultSet result = stat.executeQuery(query);
 
-            System.out.println(query);
+            
             while (result.next()) {
                 docenten.add(new Docent(result.getInt("docent_nr")));
             }

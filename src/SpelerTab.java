@@ -28,7 +28,7 @@ public class SpelerTab extends javax.swing.JPanel {
         ButtonGroup buttonGroup1 = new ButtonGroup();
         buttonGroup1.add(spelerToernooiButton);
         buttonGroup1.add(spelerMasterclassButton);
-
+       
         toonLijstSpelers();
         toonLijstToernooien();
         toonLijstMasterclassen();
@@ -152,10 +152,10 @@ public class SpelerTab extends javax.swing.JPanel {
             spelerToernooiFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(spelerToernooiFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(spelerToernooiFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(inschrijvenToernooiButton, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                    .addComponent(inschrijvenToernooiButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(spelerToernooiFrameLayout.createSequentialGroup()
                         .addGroup(spelerToernooiFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(spelerToernooiFrameLayout.createSequentialGroup()
@@ -240,10 +240,10 @@ public class SpelerTab extends javax.swing.JPanel {
             spelerMasterclassFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(spelerMasterclassFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(spelerMasterclassFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(inschrijvenMasterclassButton, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(inschrijvenMasterclassButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(spelerMasterclassFrameLayout.createSequentialGroup()
                         .addGroup(spelerMasterclassFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(spelerMasterclassFrameLayout.createSequentialGroup()
@@ -363,19 +363,7 @@ public class SpelerTab extends javax.swing.JPanel {
 
         jLabel24.setText("Achternaam");
 
-        spelerAchternaamField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                spelerAchternaamFieldActionPerformed(evt);
-            }
-        });
-
         jLabel25.setText("Huisnr");
-
-        spelerNummerFIeld.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                spelerNummerFIeldActionPerformed(evt);
-            }
-        });
 
         jLabel26.setText("Plaats");
 
@@ -436,30 +424,30 @@ public class SpelerTab extends javax.swing.JPanel {
                                         .addComponent(zoekComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(spelerSchrijfButton, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(spelerToernooiButton)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(spelerToernooiButton)
+                                        .addGap(38, 38, 38)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel10)
+                                            .addComponent(spelerRatingField, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(8, 8, 8)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(spelerMasterclassButton)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(38, 38, 38)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel10)
-                                                    .addComponent(spelerRatingField, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(text3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(8, 8, 8)
-                                                .addComponent(spelerMasterclassButton)))
-                                        .addGap(0, 59, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(text2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                                            .addComponent(text1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(text3))))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(text1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(text2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(35, 43, Short.MAX_VALUE))
                             .addComponent(spelerTelThuisField)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(spelerWijzigButton)
@@ -533,7 +521,7 @@ public class SpelerTab extends javax.swing.JPanel {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(spelerEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(jLabel10))
@@ -546,7 +534,7 @@ public class SpelerTab extends javax.swing.JPanel {
                             .addComponent(spelerWijzigButton)
                             .addComponent(spelerVoegButton)
                             .addComponent(spelerVerwijderButton))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(spelerSchrijfButton)
                             .addComponent(spelerToernooiButton)
@@ -554,18 +542,21 @@ public class SpelerTab extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(zoekComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(text1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton2)
-                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(7, 7, 7)
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(text1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(text2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(text3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 21, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(text3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 27, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
@@ -582,7 +573,9 @@ public class SpelerTab extends javax.swing.JPanel {
             spelerVoegButton.setEnabled(true);
             spelerSchrijfButton.setEnabled(true);
             spelerVerwijderButton.setEnabled(false);
-            spelerSchrijfButton.setEnabled(false);
+            spelerSchrijfButton.setEnabled(false);  
+            
+            
             resetSpelerTextFields();
             
         } 
@@ -620,26 +613,18 @@ public class SpelerTab extends javax.swing.JPanel {
         if (spelerToernooiButton.isSelected())
         {
         spelerToernooiFrame.setVisible(true);
-        spelerToernooiFrame.setSize(600, 300);
+        spelerToernooiFrame.setSize(700, 300);
         }
         else if (spelerMasterclassButton.isSelected())
         {
         spelerMasterclassFrame.setVisible(true);
-        spelerMasterclassFrame.setSize(600, 300);
+        spelerMasterclassFrame.setSize(700, 300);
         }
     }//GEN-LAST:event_spelerSchrijfButtonActionPerformed
 
     private void spelerVoegButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerVoegButtonActionPerformed
         toevoegenSpeler();
     }//GEN-LAST:event_spelerVoegButtonActionPerformed
-
-    private void spelerAchternaamFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerAchternaamFieldActionPerformed
-
-    }//GEN-LAST:event_spelerAchternaamFieldActionPerformed
-
-    private void spelerNummerFIeldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerNummerFIeldActionPerformed
-
-    }//GEN-LAST:event_spelerNummerFIeldActionPerformed
 
     private void spelerPlaatsFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spelerPlaatsFieldActionPerformed
 
@@ -862,7 +847,7 @@ public class SpelerTab extends javax.swing.JPanel {
 
         } catch (MySQLIntegrityConstraintViolationException e) {
             //Als de geselecteerde speler al ingeschreven staat voor de geselecteerde masterclass
-            System.out.println();
+  
             JOptionPane.showMessageDialog(null, selectedSpeler + " is al ingeschreven voor " + selectedMasterclass, "Inschrijving niet mogelijk", JOptionPane.ERROR_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e, "Fout", JOptionPane.ERROR_MESSAGE);
@@ -875,7 +860,6 @@ public class SpelerTab extends javax.swing.JPanel {
             Connection conn = FullHouseDatabase.getConnection();
             String query = "SELECT * from toernooi join event on event_nr=toernooi_nr where event_nr not in(select masterclass_nr from masterclass) ";
             PreparedStatement stat = conn.prepareStatement(query);
-            System.out.println(query);
             ResultSet result = stat.executeQuery();
             DefaultListModel dflm = new DefaultListModel();
             while (result.next()) {
@@ -896,7 +880,7 @@ public class SpelerTab extends javax.swing.JPanel {
             Connection conn = FullHouseDatabase.getConnection();
             String query = "SELECT * from masterclass join event on event_nr=masterclass_nr where masterclass_nr not in(select toernooi_nr from toernooi) ";
             PreparedStatement stat = conn.prepareStatement(query);
-            System.out.println(query);
+            
             ResultSet result = stat.executeQuery();
             DefaultListModel dflm = new DefaultListModel();
             while (result.next()) {
@@ -975,7 +959,7 @@ public class SpelerTab extends javax.swing.JPanel {
 
     //Toevoegen van speler aan de database
     private void toevoegenSpeler() {
-        System.out.println(1);
+       
         try {
             Connection conn = FullHouseDatabase.getConnection();
             String query = "select max(persoon_nr)from persoon";
@@ -985,7 +969,7 @@ public class SpelerTab extends javax.swing.JPanel {
 
             while (result.next()) {
                 pnr = result.getInt("max(persoon_nr)") + 1;
-                System.out.println(pnr);
+                
             }
             String query2 = "INSERT INTO persoon VALUES(?,?,?,?,?,?,?,?, ?, ?, ?)";
             String query3 = "INSERT INTO speler VALUES(?,?,?)";
@@ -1008,7 +992,7 @@ public class SpelerTab extends javax.swing.JPanel {
             stat2.setString(9, spelerTelThuisField.getText());
             stat2.setString(10, spelerThuisMobielField.getText());
             stat2.setString(11, spelerEmailField.getText());
-            System.out.println(stat2);
+    
             stat2.executeUpdate();
             stat3.executeUpdate();
             
@@ -1044,13 +1028,13 @@ public class SpelerTab extends javax.swing.JPanel {
             stat.setString(10, spelerEmailField.getText());
 //          stat2.setDouble(1, Double.parseDouble(spelerRatingField.getText()));
 //          stat2.setDouble(2, Double.parseDouble(gewonnengeld.getText()));
-            System.out.println(stat);
+            
             
             stat.executeUpdate();
 //          int effectedRecords2=stat2.executeUpdate();
 
             JOptionPane.showMessageDialog(null, selectedSpeler + " is gewijzigd", "Wijziging voltooid", JOptionPane.INFORMATION_MESSAGE);
-//          System.out.println("Aantal gewijzigde records in speler:" + effectedRecords2);
+
             toonLijstSpelers();
         } catch (Exception e) {
             JOptionPane.showMessageDialog( null, e, "Error", JOptionPane.ERROR_MESSAGE);
@@ -1066,7 +1050,7 @@ public class SpelerTab extends javax.swing.JPanel {
             String query = "SELECT * FROM speler join persoon on speler_nr=persoon_nr where persoon_nr not in (select docent_nr from docent) order by voornaam";
             ResultSet result = stat.executeQuery(query);
 
-            System.out.println(query);
+           
             maakSpeler(result);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog( null, e, "Error", JOptionPane.ERROR_MESSAGE);
@@ -1132,7 +1116,7 @@ public class SpelerTab extends javax.swing.JPanel {
             Statement stat = conn.createStatement();
             ResultSet result = stat.executeQuery(query);
 
-            System.out.println(query);
+           
             while (result.next()) {
 
                 Speler speler = new Speler();
