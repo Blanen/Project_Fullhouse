@@ -129,13 +129,8 @@
                   <Component id="toernooiTijdField" alignment="0" max="32767" attributes="0"/>
                   <Component id="toernooiInschrijfgeldField" alignment="0" max="32767" attributes="0"/>
                   <Component id="toernooiInschrijvingenButton" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="toernooiWijzigButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="toernooiToevoegButton" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="toernooiRondesField" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Component id="toernooiMaxInschrijvingenField" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -144,6 +139,11 @@
                           <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="toernooiWijzigButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="toernooiToevoegButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -178,18 +178,13 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="toernooiRondesField" min="-2" max="-2" attributes="0"/>
+                      <Component id="toernooiMaxInschrijvingenField" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="toernooiWijzigButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="toernooiToevoegButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="toernooiWijzigButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="toernooiToevoegButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="toernooiInschrijvingenButton" min="-2" pref="49" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
@@ -253,7 +248,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel13">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Rondes"/>
+        <Property name="text" type="java.lang.String" value="Max Inschrijvingen"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="toernooiInschrijfgeldField">
@@ -261,7 +256,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="toernooiInschrijfgeldFieldActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="toernooiRondesField">
+    <Component class="javax.swing.JTextField" name="toernooiMaxInschrijvingenField">
     </Component>
     <Component class="javax.swing.JButton" name="toernooiInschrijvingenButton">
       <Properties>

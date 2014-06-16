@@ -13,25 +13,23 @@ import java.util.ArrayList;
  *
  * @author Regi
  */
-public class ToernooiInschrijving {
+public class ToernooiInschrijving extends Inschrijving {
 
-    private int speler;
     private int toernooi;
-    private boolean isBetaald;
 
-    public ToernooiInschrijving(int speler, int Toernooi, boolean isBetaald) {
-        this.speler = speler;
+    public ToernooiInschrijving(int speler, int toernooi, boolean isBetaald) {
+        super(speler, isBetaald);
         this.toernooi = toernooi;
-        this.isBetaald = isBetaald;
+        
     }
     
     public static ArrayList<ToernooiInschrijving> getToernooiInschrijvingBySpeler(Speler speler){
         ArrayList <ToernooiInschrijving> inschrijvingen = new ArrayList();
-        String query = "SELECT * FROM ToernooiInschrijving WHERE speler = " + speler.getPNR() + ";";
+        String query = "SELECT * FROM Toernooi_Inschrijving WHERE speler = " + speler.getPNR() + ";";
         try{
             ResultSet result = FullHouseDatabase.getConnection().createStatement().executeQuery(query);
             while(result.next()){
-                inschrijvingen.add(new ToernooiInschrijving(speler.getPNR(),result.getInt("toernooi"), result.getBoolean("isBetaald")));
+                inschrijvingen.add(new ToernooiInschrijving(speler.getPNR(),result.getInt("toernooi"), result.getBoolean("inschrijfstatus")));
             }
         }catch(SQLException e){
             System.out.println(e);
@@ -41,11 +39,11 @@ public class ToernooiInschrijving {
     
     public static ArrayList<ToernooiInschrijving> getToernooiInschrijvingByToernooi(Toernooi toernooi){
         ArrayList <ToernooiInschrijving> inschrijvingen = new ArrayList();
-        String query = "SELECT * FROM ToernooiInschrijving WHERE speler = " + toernooi.getEventNr() + ";";
+        String query = "SELECT * FROM Toernooi_Inschrijving WHERE speler = " + toernooi.getEventNr() + ";";
         try{
             ResultSet result = FullHouseDatabase.getConnection().createStatement().executeQuery(query);
             while(result.next()){
-                inschrijvingen.add(new ToernooiInschrijving(result.getInt("speler"), toernooi.getEventNr(), result.getBoolean("isBetaald")));
+                inschrijvingen.add(new ToernooiInschrijving(result.getInt("speler"), toernooi.getEventNr(), result.getBoolean("inschrijfstatus")));
             }
         }catch(SQLException e){
             System.out.println(e);
@@ -53,16 +51,40 @@ public class ToernooiInschrijving {
         return inschrijvingen;
     }
     
-    public int getSpeler(){
-        return speler;
-    }
-    
     public Toernooi getToernooi(){
         return new Toernooi(toernooi);
     }
     
-    public boolean isBetaald(){
-        return isBetaald;
+    @Override
+    public Toernooi getEvent(){
+        return getToernooi();
+    }
+    
+    public void writeToDB(){
+        String insert = "INSERT INTO toernooi_inschrijving ("+toernooi+","+getSpelerID()+","+isBetaald()+");";
+        String update = "UPDATE Toernooi_Inschrijving SET inschrijfstatus = "+isBetaald()+" WHERE toernooi = "+toernooi+" AND speler = "+getSpelerID()+";";
+        System.out.println(update);
+        try{
+            if(existsInDB()){
+                FullHouseDatabase.getConnection().createStatement().executeUpdate(update);
+            }else{
+                FullHouseDatabase.getConnection().createStatement().executeUpdate(insert);
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+    }
+    
+    public boolean existsInDB(){
+          try{
+            String query = " SELECT EXISTS(SELECT toernooi FROM toernooi_inschrijving WHERE speler = "+getSpelerID()+" AND toernooi = "+toernooi+")AS exist;";
+            ResultSet rs = FullHouseDatabase.getConnection().createStatement().executeQuery(query);
+            rs.next();
+            return rs.getBoolean("exist");
+        }catch(SQLException e){
+            System.out.println(e);
+            return false;
+        }
     }
 }
 

@@ -53,7 +53,7 @@ public class ToernooiTab extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         toernooiInschrijfgeldField = new javax.swing.JTextField();
-        toernooiRondesField = new javax.swing.JTextField();
+        toernooiMaxInschrijvingenField = new javax.swing.JTextField();
         toernooiInschrijvingenButton = new javax.swing.JButton();
         toernooiWijzigButton = new javax.swing.JButton();
         toernooiToevoegButton = new javax.swing.JButton();
@@ -149,7 +149,7 @@ public class ToernooiTab extends javax.swing.JPanel {
 
         jLabel12.setText("Inschrijfgeld");
 
-        jLabel13.setText("Rondes");
+        jLabel13.setText("Max Inschrijvingen");
 
         toernooiInschrijfgeldField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,11 +192,7 @@ public class ToernooiTab extends javax.swing.JPanel {
                     .addComponent(toernooiTijdField)
                     .addComponent(toernooiInschrijfgeldField)
                     .addComponent(toernooiInschrijvingenButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(toernooiWijzigButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(toernooiToevoegButton))
-                    .addComponent(toernooiRondesField)
+                    .addComponent(toernooiMaxInschrijvingenField)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
@@ -204,7 +200,11 @@ public class ToernooiTab extends javax.swing.JPanel {
                             .addComponent(jLabel11)
                             .addComponent(jLabel13)
                             .addComponent(jLabel12))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(toernooiWijzigButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(toernooiToevoegButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -234,15 +234,12 @@ public class ToernooiTab extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(toernooiRondesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(toernooiMaxInschrijvingenField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(toernooiWijzigButton)
-                                .addGap(24, 24, 24))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(toernooiToevoegButton)
-                                .addGap(18, 18, 18)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(toernooiWijzigButton)
+                            .addComponent(toernooiToevoegButton))
+                        .addGap(24, 24, 24)
                         .addComponent(toernooiInschrijvingenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10))))
         );
@@ -294,7 +291,7 @@ public class ToernooiTab extends javax.swing.JPanel {
         toernooiDatumField.setText(toernooi.getDatum().toString());
         toernooiInschrijfgeldField.setText(Double.toString(toernooi.getInschrijfGeld()));
         toernooiTijdField.setText(toernooi.getTijd());
-        toernooiRondesField.setText(Integer.toString(toernooi.getRondes()));
+        toernooiMaxInschrijvingenField.setText(Integer.toString(toernooi.getMax_inschrijvingen()));
     }
 
     private void updateToernooi(Toernooi toernooi) {
@@ -302,7 +299,7 @@ public class ToernooiTab extends javax.swing.JPanel {
         String datumStr = toernooiDatumField.getText();
         String tijd = toernooiTijdField.getText();
         String inschrijfGeldStr = toernooiInschrijfgeldField.getText();
-        String rondesStr = toernooiRondesField.getText();
+        String rondesStr = toernooiMaxInschrijvingenField.getText();
         String max_spelersStr = "100";
 
         Date datum = null;
@@ -329,7 +326,6 @@ public class ToernooiTab extends javax.swing.JPanel {
         }
         if (valid) {
             toernooi.setDatum(datum);
-            toernooi.setRondes(rondes);
             toernooi.setMax_inschrijvingen(max_spelers);
             toernooi.setPlaats(plaats);
             toernooi.setTijd(tijd);
@@ -343,8 +339,7 @@ public class ToernooiTab extends javax.swing.JPanel {
         String datumStr = toernooiDatumField.getText();
         String tijd = toernooiTijdField.getText();
         String inschrijfGeldStr = toernooiInschrijfgeldField.getText();
-        String rondesStr = toernooiRondesField.getText();
-        String max_spelersStr = "100";
+        String max_spelersStr = toernooiMaxInschrijvingenField.getText();
 
         Date datum = null;
         int rondes = 0;
@@ -357,7 +352,6 @@ public class ToernooiTab extends javax.swing.JPanel {
         valid &= tijd.length() <= 5;
         try {
             inschrijfGeld = Double.parseDouble(inschrijfGeldStr);
-            rondes = Integer.parseInt(rondesStr);
             max_spelers = Integer.parseInt(max_spelersStr);
             datum = Date.valueOf(datumStr);
         } catch (NumberFormatException e) {
@@ -369,7 +363,7 @@ public class ToernooiTab extends javax.swing.JPanel {
             valid = false;
         }
         if (valid) {
-            return new Toernooi(plaats, datum, tijd, inschrijfGeld, max_spelers, 8, rondes);
+            return new Toernooi(plaats, datum, tijd, inschrijfGeld, max_spelers, 8);
         } else {
             return null;
         }
@@ -422,8 +416,8 @@ public class ToernooiTab extends javax.swing.JPanel {
     private javax.swing.JTable toernooiInschrijvingTable;
     private javax.swing.JButton toernooiInschrijvingenButton;
     private javax.swing.JList toernooiList;
+    private javax.swing.JTextField toernooiMaxInschrijvingenField;
     private javax.swing.JTextField toernooiPlaatsField;
-    private javax.swing.JTextField toernooiRondesField;
     private javax.swing.JTextField toernooiTijdField;
     private javax.swing.JButton toernooiToevoegButton;
     private javax.swing.JButton toernooiWijzigButton;

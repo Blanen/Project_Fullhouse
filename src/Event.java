@@ -49,8 +49,7 @@ public abstract class Event {
             System.out.println(e);
         }
     }
-    
-
+   
     public abstract boolean existsInDB();
 
     public void writeToDB() {
@@ -85,8 +84,12 @@ public abstract class Event {
         return getEvent_nr();
     }
     
+    public abstract boolean isVol();    
+   
+    
     @Override
     public String toString(){
+        
         return this.getClass().getSimpleName() + "  " + getDatum() +"  "+ getPlaats(); 
     }
 

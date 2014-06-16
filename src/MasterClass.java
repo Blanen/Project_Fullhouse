@@ -61,7 +61,7 @@ public class MasterClass extends Event {
     @Override
     public void writeToDB() {
         super.writeToDB();
-        String update = "UPDATE masterclass SET docent = min_rating = " + min_rating + ", " + getDocent().getPNR()+ " WHERE masterclass_nr = " + getEventNr() + ";";
+        String update = "UPDATE masterclass SET min_rating = " + min_rating + ", docent = " + getDocent().getPNR()+ " WHERE masterclass_nr = " + getEventNr() + ";";
         String write = "INSERT INTO masterclass VALUES(" + getEventNr() + ", " + min_rating + ", " + getDocent().getPNR() + ");";
         
         try {
@@ -97,5 +97,17 @@ public class MasterClass extends Event {
      */
     public void setDocent(Docent docent) {
         this.docent = docent;
+    }
+    
+    public boolean isVol(){
+        try{
+            String query = "SELECT count(masterclass) FROM masterclass_inschrijving WHERE masterclass = "+getEventNr()+";";
+            ResultSet res = FullHouseDatabase.getConnection().createStatement().executeQuery(query);
+            res.next();
+            return res.getInt("count(masterclass)") >= getMax_inschrijvingen();
+        }catch(SQLException e){
+            System.out.println(e);
+            return true;
+        }
     }
 }

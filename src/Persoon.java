@@ -178,15 +178,26 @@ public class Persoon {
         return true;
 
     }
-@Override
-public String toString(){
-    
-    if(getTussenvoegsel()!=null)
-    {
-    return getVoornaam()+" "+getTussenvoegsel()+" "+getAchternaam();
-}
+    @Override
+    public String toString(){
+
+        if (getTussenvoegsel() != null) {
+            return getVoornaam() + " " + getTussenvoegsel() + " " + getAchternaam();
+        }
     else{
         return getVoornaam()+" "+getAchternaam();
     }
 }
+    
+    public void makeID(){
+        try{
+            String query = "SELECT max(persoon_nr) AS max FROM persoon";
+            Statement stat = FullHouseDatabase.getConnection().createStatement();
+            ResultSet res = stat.executeQuery(query);
+            res.next();
+            persoon_nr = res.getInt("max") + 1;
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+    }
 }

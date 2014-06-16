@@ -56,6 +56,8 @@ public class MasterClassTab extends javax.swing.JPanel {
         masterclassWijzigButton = new javax.swing.JButton();
         masterclassDocentButton = new javax.swing.JButton();
         masterclassDocentField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        masterClassMaxInschrijvingenField = new javax.swing.JTextField();
 
         jScrollPane8.setViewportView(selecteerDocentList);
 
@@ -144,6 +146,8 @@ public class MasterClassTab extends javax.swing.JPanel {
 
         masterclassDocentField.setEditable(false);
 
+        jLabel1.setText("Maximum Inschrijvingen");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -180,8 +184,10 @@ public class MasterClassTab extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel32)
-                            .addComponent(masterclassDocentButton))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(masterclassDocentButton)
+                            .addComponent(jLabel1)
+                            .addComponent(masterClassMaxInschrijvingenField))
+                        .addGap(23, 23, 23))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,19 +215,20 @@ public class MasterClassTab extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(masterclassMinRatingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(masterClassMaxInschrijvingenField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                         .addComponent(jLabel32)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(masterclassDocentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(masterclassDocentButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(masterclassWijzigButton)
-                                .addGap(24, 24, 24))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(masterclassToevoegButton)
-                                .addGap(18, 18, 18)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(masterclassToevoegButton)
+                            .addComponent(masterclassWijzigButton))
+                        .addGap(18, 18, 18)
                         .addComponent(toernooiInschrijvingenButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane5))
                 .addContainerGap())
@@ -261,6 +268,7 @@ public class MasterClassTab extends javax.swing.JPanel {
     private void masterclassDocentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masterclassDocentButtonActionPerformed
         selectDocentFrame.setVisible(true);
         selectDocentFrame.setSize(400, 300);
+        getDocentList();
     }//GEN-LAST:event_masterclassDocentButtonActionPerformed
 
     private void masterclassDocentWasSelectedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masterclassDocentWasSelectedButtonActionPerformed
@@ -275,7 +283,7 @@ public class MasterClassTab extends javax.swing.JPanel {
         String tijd = masterclassTijdField.getText();
         String inschrijfGeldStr = masterclassInschrijfgeldField.getText();
         String minRatingStr = masterclassMinRatingField.getText();
-        String max_spelersStr = "100";
+        String max_spelersStr = masterClassMaxInschrijvingenField.getText();
 
         Date datum = null;
         int minRating = 0;
@@ -316,7 +324,7 @@ public class MasterClassTab extends javax.swing.JPanel {
         String tijd = masterclassTijdField.getText();
         String inschrijfGeldStr = masterclassInschrijfgeldField.getText();
         String minRatingStr = masterclassMinRatingField.getText();
-        String max_spelersStr = "100";
+        String max_spelersStr = masterClassMaxInschrijvingenField.getText();
 
         Date datum = null;
         double minRating = 0;
@@ -362,6 +370,7 @@ public class MasterClassTab extends javax.swing.JPanel {
         masterclassTijdField.setText(masterclass.getTijd());
         masterclassMinRatingField.setText(Double.toString(masterclass.getMinRating()));
         masterclassDocentField.setText(masterclass.getDocent().toString());
+        masterClassMaxInschrijvingenField.setText(Integer.toString(masterclass.getMax_inschrijvingen()));
         curDocent = masterclass.getDocent();
     }
     
@@ -379,8 +388,23 @@ public class MasterClassTab extends javax.swing.JPanel {
         }
         masterclassList.setModel(model);
     }
+    
+    private void getDocentList(){
+        String query = "SELECT docent_nr FROM docent;";
+        DefaultListModel dml = new DefaultListModel();
+        try{
+            ResultSet res = FullHouseDatabase.getConnection().createStatement().executeQuery(query);
+            while(res.next()){
+                dml.addElement(new Docent(res.getInt("docent_nr")));
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        selecteerDocentList.setModel(dml);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
@@ -389,6 +413,7 @@ public class MasterClassTab extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JTextField masterClassMaxInschrijvingenField;
     private javax.swing.JTextField masterclassDatumField;
     private javax.swing.JButton masterclassDocentButton;
     private javax.swing.JTextField masterclassDocentField;

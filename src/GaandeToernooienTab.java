@@ -15,6 +15,7 @@ import javax.swing.DefaultListModel;
  */
 public class GaandeToernooienTab extends javax.swing.JPanel {
 
+    Toernooi huidigToernooi;
     /**
      * Creates new form GaandeToernooienTab
      */
@@ -69,7 +70,7 @@ public class GaandeToernooienTab extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(deelnemendeSpelersList);
 
-        jLabel1.setText("Deelneemende spelers:");
+        jLabel1.setText("Deelnemende spelers:");
 
         jLabel2.setText("Selecteer een gaand toernooi:");
 
@@ -252,7 +253,13 @@ public class GaandeToernooienTab extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startToernooiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startToernooiButtonActionPerformed
-        
+      if(nietGestarteToernooienComboBox.getSelectedItem() instanceof Toernooi) {
+          huidigToernooi = ((Toernooi) nietGestarteToernooienComboBox.getSelectedItem());
+          huidigToernooi.eersteIndeling();
+          vulTafels();
+          vulDeelnemers();
+      }
+      
     }//GEN-LAST:event_startToernooiButtonActionPerformed
 
     private void getGaandeToernooien () {
@@ -291,6 +298,14 @@ public class GaandeToernooienTab extends javax.swing.JPanel {
             System.out.println(e);
         }
         nietGestarteToernooienComboBox.setModel(model);
+    }
+    
+    private void vulTafels(){
+        huidigToernooi.getHuidigeRondeTafels();
+    }
+    
+    private void vulDeelnemers(){
+        
     }
     
     private Toernooi geselecteerdToernooi;

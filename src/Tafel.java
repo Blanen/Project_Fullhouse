@@ -44,13 +44,22 @@ public class Tafel {
             stat.setInt(3, toernooi.getEventNr());
             ResultSet result = stat.executeQuery();
             while (result.next()) {
-                spelers.add(new ToernooiInschrijving(result.getInt("speler"), toernooi.getEventNr()));
+//                spelers.add(new ToernooiInschrijving(result.getInt("speler"), toernooi.getEventNr()));
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
 
+    private void spelerWins(Speler speler){
+        getIndelingFromDB();
+        for(ToernooiInschrijving sp : spelers){
+            if(speler.getPNR() == sp.getSpelerID()){
+                toernooi.spelerToNextRound(sp, this);
+            }
+        }
+    }
+    
     public void writeToDB() {
         Connection conn;
         PreparedStatement stat;
@@ -117,5 +126,14 @@ public class Tafel {
             System.out.println(e);
             return false;
         }
+    }
+    
+    public int getRonde(){
+        return ronde;
+    }
+    
+    public boolean zitVol(){
+        getIndelingFromDB();
+        return spelers.size() == toernooi.getTafelGrootte();
     }
 }

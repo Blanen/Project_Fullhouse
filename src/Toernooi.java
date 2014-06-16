@@ -11,7 +11,7 @@ import java.util.Random;
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+$ */
 /**
  *
  * @author Regi
@@ -19,16 +19,14 @@ import java.util.Random;
 public class Toernooi extends Event {
 
     private int tafelGrootte;
-    private int rondes;
     private int huidigeRonde;
     private Random randomGenerator = new Random();
     private ArrayList<Tafel> tafels = new ArrayList();
     private ArrayList<ToernooiInschrijving> inschrijvingen = new ArrayList();
 
-    public Toernooi(String plaats, Date datum, String tijd, double inschrijfGeld, int max_inschrijvingen, int tafelGrootte, int rondes) {
+    public Toernooi(String plaats, Date datum, String tijd, double inschrijfGeld, int max_inschrijvingen, int tafelGrootte) {
         super(plaats, datum, tijd, inschrijfGeld, max_inschrijvingen);
         this.tafelGrootte = tafelGrootte;
-        this.rondes = rondes;
     }
 
     public Toernooi(int toernooi_nr) {
@@ -41,40 +39,49 @@ public class Toernooi extends Event {
             ResultSet result = stat.executeQuery(query);
             result.next();
             tafelGrootte = result.getInt("tafelgrootte");
-            rondes = result.getInt("rondes");
         } catch (SQLException e) {
             System.out.println(e);
+        }
+        initInschrijvingen();
+    }
+    
+    public void eersteIndeling(){
+        initInschrijvingen();
+        maakTafels();
+        maakIndeling();
+    }
+    
+    public void maakTafels(){
+        ArrayList<Tafel> tafels = new ArrayList();
+        int aantalSpelers = inschrijvingen.size();
+        int minAantalTafels = aantalSpelers/tafelGrootte;
+        int aantalRondes = 0;
+        double tafelAmount = minAantalTafels;
+        while(tafelAmount > 1){
+            tafelAmount = tafelAmount/tafelGrootte;
+            aantalRondes++;
+        }
+        for(int i = 1; i<=aantalRondes; i++){
+            for(int x = 0; x < Math.pow(tafelGrootte, aantalRondes - i); x++){
+                tafels.add(new Tafel(this, x, i));
+            }
+        }
+        for(Tafel tafel : tafels){
+            tafel.writeToDB();
         }
     }
     
     public void maakIndeling(){
-	int aantalSpelers = inschrijvingen.size();
-	ArrayList<Tafel> tafels = new ArrayList();
-	
-        
-        try {
+        ArrayList<ToernooiInschrijving> inschrijvingen = this.inschrijvingen;
+        /*try {
             String query = "SELECT MAX(rondenummer) FROM tafel_indeling WHERE toernooi = toernooi.getEvent_nr;";
             ResultSet result = FullHouseDatabase.getConnection().createStatement().executeQuery(query);
             result.next();
             huidigeRonde = 1 + result.getInt("rondenummer");
         } catch (SQLException e) {
             System.out.println(e);
-        }
+        }*/
         
-	//minAantalTafels == tafelgrootte/winnaars^x;
-	
-	int minAantalTafels = aantalSpelers/tafelGrootte;
-	int winnaars = 1;
-        
-	double x =  Math.log10(minAantalTafels)/Math.log10(tafelGrootte/winnaars); 
-
-	double aantalTafels = Math.pow(tafelGrootte/winnaars, Math.ceil(x));
-	
-	for(int i = 0; i< aantalTafels; i++){
-		tafels.add(new Tafel(this, i, huidigeRonde));
-	}
-
-	
 	while(inschrijvingen.size()>0){
 		for(Tafel tafel : tafels){
 			ToernooiInschrijving speler = inschrijvingen.get(randomGenerator.nextInt(inschrijvingen.size()));
@@ -88,6 +95,37 @@ public class Toernooi extends Event {
 	}
 }
 
+    public void spelerToNextRound(ToernooiInschrijving speler, Tafel tafel){
+        int huidigeRonde = tafel.getRonde()+1;
+        ArrayList <Tafel> tafels = new ArrayList();
+        String query = "SELECT tafel_nr FROM tafel_indeling WHERE toernooi = "+getEventNr()+" AND ronde_nr = "+huidigeRonde+";";
+        try{
+            ResultSet rs = FullHouseDatabase.getConnection().createStatement().executeQuery(query);
+            while(rs.next()){
+                Tafel tfl = new Tafel(this, rs.getInt("tafel_nr"), huidigeRonde);
+                if(!tfl.zitVol()){
+                    tafels.add(tfl);
+                }
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        tafels.get(randomGenerator.nextInt(tafels.size())).addInschrijving(speler);
+    }
+    
+    @Override
+    public boolean isVol(){
+        try{
+            String query = "SELECT count(toernooi) FROM toernooi_inschrijving WHERE toernooi = "+getEventNr()+";";
+            ResultSet res = FullHouseDatabase.getConnection().createStatement().executeQuery(query);
+            res.next();
+            return res.getInt("count(toernooi)") >= getMax_inschrijvingen();
+        }catch(SQLException e){
+            System.out.println(e);
+            return true;
+        }
+    }
+    
     @Override
     public boolean existsInDB() {
         String query = " SELECT EXISTS(SELECT toernooi_nr FROM toernooi WHERE toernooi_nr = "+getEventNr()+")AS exist;";
@@ -108,8 +146,8 @@ public class Toernooi extends Event {
     public void writeToDB() {
         super.writeToDB();
         
-        String update = "UPDATE toernooi set tafelGrootte = " + getTafelGrootte() + ", rondes = " + getRondes() + " WHERE toernooi_nr = " + getEventNr() + ";";
-        String write = "INSERT INTO toernooi VALUES(" + getEventNr() + ", " + getTafelGrootte() + ", " + getRondes() + ", null, null, null);";
+        String update = "UPDATE toernooi set tafelGrootte = " + getTafelGrootte() + ", max_inschrijvingen = " + getMax_inschrijvingen()+ " WHERE toernooi_nr = " + getEventNr() + ";";
+        String write = "INSERT INTO toernooi VALUES(" + getEventNr() + ", " + getTafelGrootte() + ", " + getMax_inschrijvingen()+ ", null, null, null);";
         
         Statement stat;
         try {
@@ -140,24 +178,11 @@ public class Toernooi extends Event {
     }
 
     /**
-     * @return the rondes
-     */
-    public int getRondes() {
-        return rondes;
-    }
-
-    /**
-     * @param rondes the rondes to set
-     */
-    public void setRondes(int rondes) {
-        this.rondes = rondes;
-    }
-
-    /**
      * @return the tafels
      */
-    public ArrayList<Tafel> getTafels() {
-        return tafels;
+    public ArrayList<Tafel> getHuidigeRondeTafels() {
+        System.out.println("getHuidigeRondeTafels not yet implemented!");
+        return null;
     }
 
     /**
@@ -167,5 +192,18 @@ public class Toernooi extends Event {
         return inschrijvingen;
     }
 
+    public void initInschrijvingen(){
+        ArrayList <ToernooiInschrijving> inschr = new ArrayList();
+        try{
+            String query = "SELECT * FROM toernooi_inschrijving WHERE toernooi = "+getEventNr()+";";
+            ResultSet res  = FullHouseDatabase.getConnection().createStatement().executeQuery(query);
+            while(res.next()){
+                inschr.add(new ToernooiInschrijving(res.getInt("speler"), getEventNr(), res.getBoolean("inschrijfstatus")));
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        inschrijvingen = inschr;
+    }
     
 }
