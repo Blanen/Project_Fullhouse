@@ -1,5 +1,6 @@
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -113,12 +114,6 @@ public class DocentenTab extends javax.swing.JPanel {
         });
 
         jLabel43.setText("Huisnr");
-
-        docentPlaatsField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                docentPlaatsFieldActionPerformed(evt);
-            }
-        });
 
         jLabel44.setText("Plaats");
 
@@ -339,16 +334,13 @@ public class DocentenTab extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_docentHuisnummerFieldActionPerformed
 
-    private void docentPlaatsFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docentPlaatsFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_docentPlaatsFieldActionPerformed
-
     private void docentWijzigButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docentWijzigButtonActionPerformed
         wijzigenDocent();
     }//GEN-LAST:event_docentWijzigButtonActionPerformed
 
     private void docentZoekButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docentZoekButtonActionPerformed
-        // TODO add your handling code here:
+       zoekDocenten();
+       
     }//GEN-LAST:event_docentZoekButtonActionPerformed
 
     private void docentToevoegButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docentToevoegButtonActionPerformed
@@ -396,6 +388,71 @@ public class DocentenTab extends javax.swing.JPanel {
             fillSelecteerDocentList();
         }
     }//GEN-LAST:event_docentZoekComboItemStateChanged
+    private void zoekDocenten()
+    {
+        String selectedItem = (String) docentZoekCombo.getSelectedItem();
+         String query = "";
+         PreparedStatement stat;
+        try {
+            Connection conn = FullHouseDatabase.getConnection();
+
+            if (selectedItem.equals("ID")) {
+                query = "SELECT * from persoon join docent on persoon_nr=docent_nr where persoon_nr not in(select speler_nr from speler ) and persoon_nr=? order by voornaam";
+                stat = conn.prepareStatement(query);
+                stat.setInt(1, Integer.parseInt(text1.getText()));
+                ResultSet result = stat.executeQuery();
+                maakDocent(result);
+                
+            } else if (selectedItem.equals("Postcode/Huisnummer")) {
+                query = "SELECT * FROM persoon join docent on persoon_nr=docent_nr where persoon_nr not in(select speler_nr from speler) and postcode like ? and huisnummer like ? order by voornaam";
+                stat = conn.prepareStatement(query);
+                stat.setString(1, (text1.getText()));
+                stat.setString(2, "%" + text2.getText());
+                ResultSet result = stat.executeQuery();
+                maakDocent(result);
+               
+            } else if (selectedItem.equals("Naam/Achternaam")) {
+                query = "SELECT * FROM persoon join docent on persoon_nr=docent_nr where persoon_nr not in(select speler_nr from speler) and voornaam like ? and tussenvoegsel like ? and achternaam like? order by voornaam";
+                stat = conn.prepareStatement(query);
+                stat.setString(1, (text1.getText() + "%"));
+                stat.setString(2, "%" + text2.getText() + "%");
+                stat.setString(3, "%" + text3.getText() + "%");
+                ResultSet result = stat.executeQuery();
+                maakDocent(result);
+            }
+        } catch (SQLException e) {
+        JOptionPane.showMessageDialog( null, e, "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
+    }
+    private void maakDocent(ResultSet rs)
+    {
+        try {
+
+            DefaultListModel dm = new DefaultListModel();
+            dm.addElement("--Nieuwe Docent--");
+            while (rs.next()) {
+                String voornaam= rs.getString("voornaam");
+                String tussenvoegsel= rs.getString("tussenvoegsel");
+                String achternaam= rs.getString("achternaam");
+                String straat=rs.getString("straat");
+                String huisnummer= rs.getString("huisnummer");
+                String woonplaats= rs.getString("woonplaats");
+                String postcode= rs.getString("postcode");
+                String mobiel=rs.getString("mobiel_nr");
+                String vast=rs.getString("vast_nr");
+                String email= rs.getString("emailadres");
+                String rekening= rs.getString("rekening_nr");
+                Docent docent = new Docent(voornaam, tussenvoegsel, achternaam, straat, huisnummer, postcode, woonplaats, mobiel, vast, email, rekening);
+                docent.writeToDB();
+
+                dm.addElement(docent);
+            }
+            lijstDocenten.setModel(dm);
+        } catch (SQLException e) {
+           JOptionPane.showMessageDialog( null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     private void clearText(JTextField text)
     {
        text.setText(null);
@@ -475,6 +532,7 @@ public class DocentenTab extends javax.swing.JPanel {
             if (valid) {
                 selectedDocent.writeToDB();
             }
+            fillSelecteerDocentList();
         }
     }
 
@@ -494,7 +552,7 @@ public class DocentenTab extends javax.swing.JPanel {
         try {
             rekening = docentRekeningField.getText();
         } catch (NumberFormatException e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(this, e, "Error", JOptionPane.ERROR_MESSAGE);
             valid = false;
         }
 
@@ -504,7 +562,7 @@ public class DocentenTab extends javax.swing.JPanel {
             ((DefaultListModel) lijstDocenten.getModel()).addElement(docent);
         }
     }
-
+  
     private void fillSelecteerDocentList() {
         DefaultListModel dml = new DefaultListModel();
         ArrayList<Docent> docenten = getDocenten();
