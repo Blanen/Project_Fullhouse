@@ -73,28 +73,41 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="docentToevoegButton" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="docentStraatField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="docentRekeningField" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel35" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel36" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel37" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel38" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="docentZoekButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="docentZoekCombo" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="docentZoekField3" pref="139" max="32767" attributes="0"/>
-                                          <Component id="docentZoekField2" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="docentZoekField1" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="text3" pref="139" max="32767" attributes="0"/>
+                                          <Component id="text2" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="text1" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                              <Component id="label1" min="-2" pref="82" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="label3" min="-2" pref="82" max="-2" attributes="0"/>
+                                                  <Component id="label2" min="-2" pref="82" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                       </Group>
                                   </Group>
-                                  <Component id="jLabel35" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel36" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel37" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel38" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="docentStraatField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="docentRekeningField" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -157,18 +170,27 @@
                           <Component id="docentToevoegButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="docentZoekCombo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="docentZoekField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="docentZoekButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="docentZoekCombo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="text1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="docentZoekButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="label1" min="-2" pref="19" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                      <Component id="docentZoekField2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="text2" min="-2" max="-2" attributes="0"/>
+                          <Component id="label2" min="-2" pref="18" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="docentZoekField3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="label3" max="32767" attributes="0"/>
+                          <Component id="text3" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jScrollPane9" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jScrollPane9" alignment="0" pref="543" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -200,7 +222,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="docentZoekField2">
+    <Component class="javax.swing.JTextField" name="text2">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel34">
       <Properties>
@@ -280,7 +302,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="docentZoekButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="docentZoekField1">
+    <Component class="javax.swing.JTextField" name="text1">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel38">
       <Properties>
@@ -304,7 +326,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="docentZoekComboActionPerformed"/>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="docentZoekComboItemStateChanged"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel41">
@@ -327,7 +349,28 @@
         <Property name="text" type="java.lang.String" value="Achternaam"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="docentZoekField3">
+    <Component class="javax.swing.JTextField" name="text3">
+    </Component>
+    <Component class="javax.swing.JLabel" name="label1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="2"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="label2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="2"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="label3">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="2"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
