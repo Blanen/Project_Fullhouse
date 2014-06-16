@@ -58,7 +58,7 @@ public class Toernooi extends Event {
             result.next();
             huidigeRonde = 1 + result.getInt("rondenummer");
         } catch (SQLException e) {
-            System.out.println(e);
+            
         }
         
 	//minAantalTafels == tafelgrootte/winnaars^x;
