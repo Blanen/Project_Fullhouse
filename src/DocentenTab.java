@@ -292,7 +292,16 @@ public class DocentenTab extends javax.swing.JPanel {
     private void lijstDocentenValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lijstDocentenValueChanged
         if (lijstDocenten.getSelectedValue() != null && lijstDocenten.getSelectedValue() instanceof Docent) {
             fillDocentFields((Docent)lijstDocenten.getSelectedValue());
+            docentWijzigButton.setEnabled(true);
+            docentToevoegButton.setEnabled(false);
         }
+        else if (lijstDocenten.getSelectedIndex() == 0 || lijstDocenten.getSelectedValue() == null) {
+            docentWijzigButton.setEnabled(false);
+            docentToevoegButton.setEnabled(true);
+            resetDocentFields();
+            
+        } 
+        
     }//GEN-LAST:event_lijstDocentenValueChanged
 
     private void docentAchternaamFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docentAchternaamFieldActionPerformed
@@ -322,7 +331,20 @@ public class DocentenTab extends javax.swing.JPanel {
     private void docentToevoegButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docentToevoegButtonActionPerformed
         toevoegenDocent();
     }//GEN-LAST:event_docentToevoegButtonActionPerformed
-
+    private void resetDocentFields()
+    {
+       docentVoornaamField.setText(null);
+        docentTussenVoegselField.setText(null);
+        docentAchternaamField.setText(null);
+        docentStraatField.setText(null);
+        docentHuisnummerField.setText(null);
+        docentPostcodeField.setText(null);
+        docentPlaatsField.setText(null);
+        docentEmailField.setText(null);
+        docentVastField.setText(null);
+        docentMobielField.setText(null);
+        docentRekeningField.setText(null);  
+    }
     private void fillDocentFields(Docent docent) {
         docentVoornaamField.setText(docent.getVoornaam());
         docentTussenVoegselField.setText(docent.getTussenvoegsel());
@@ -407,6 +429,7 @@ public class DocentenTab extends javax.swing.JPanel {
     private void fillSelecteerDocentList() {
         DefaultListModel dml = new DefaultListModel();
         ArrayList<Docent> docenten = getDocenten();
+        dml.addElement("--Nieuwe Docent--");
         for (Docent docent : docenten) {
             dml.addElement(docent);
         }

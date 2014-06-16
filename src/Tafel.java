@@ -44,7 +44,7 @@ public class Tafel {
             stat.setInt(3, toernooi.getEventNr());
             ResultSet result = stat.executeQuery();
             while (result.next()) {
-                spelers.add(new ToernooiInschrijving(result.getInt("speler"), toernooi.getEventNr()));
+                spelers.add(new ToernooiInschrijving(result.getInt("speler"), toernooi.getEventNr(), true));
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -75,19 +75,19 @@ public class Tafel {
     }
 
     private void writeIndelingToDB(ToernooiInschrijving inschrijving) {
-        if (!indelingExistsInDB(inschrijving.getSpeler())) {
-            try {
-                String insert = "INSERT INTO speler_indeling VALUES (?,?,?,?)";
-                PreparedStatement stat = FullHouseDatabase.getConnection().prepareStatement(insert);
-                stat.setInt(1, tafelnummer);
-                stat.setInt(2, ronde);
-                stat.setInt(3, toernooi.getEventNr());
-                stat.setInt(4, inschrijving.getSpeler().getPNR());
-                stat.executeUpdate();
-            } catch (SQLException e) {
-                System.out.println(e);
-            }
-        }
+//        //if (!indelingExistsInDB(inschrijving.getSpeler())) {
+//            try {
+//                String insert = "INSERT INTO speler_indeling VALUES (?,?,?,?)";
+//                PreparedStatement stat = FullHouseDatabase.getConnection().prepareStatement(insert);
+//                stat.setInt(1, tafelnummer);
+//                stat.setInt(2, ronde);
+//                stat.setInt(3, toernooi.getEventNr());
+//                //stat.setInt(4, Integer.toString(inschrijving.getSpeler().getPNR()));
+//                stat.executeUpdate();
+//            } catch (SQLException e) {
+//                System.out.println(e);
+//            }
+//        }
     }
 
     public final boolean existsInDB() {
