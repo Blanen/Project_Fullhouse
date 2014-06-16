@@ -136,28 +136,35 @@ public class Persoon {
         return emailadres;
     }
 
-    public boolean existsInDB() {
+    public boolean persoonExistsInDB() {
+        if(getPNR()==0)
+        {
+            maakID();
+            
+           
+        }
         try {
+           
             String query = "SELECT EXISTS(SELECT persoon_nr FROM persoon WHERE persoon_nr = " + getPNR() + ")AS exist;";
             ResultSet rs = FullHouseDatabase.getConnection().createStatement().executeQuery(query);
             rs.next();
             return rs.getBoolean("exist");
         } catch (SQLException e) {
-            System.out.println(e);
+            
             return false;
         }
     }
 
     public boolean writeToDB() {
-        String insert = "INSERT INTO persoon VALUES(" + persoon_nr + ",?,?,?,?,?,?,?,?,?,?);";
-        String update = "UPDATE persoon SET voornaam = ?, tussenvoegsel = ?, achternaam = ?, straat = ?, huisnummer = ?, postcode = ?, woonplaats = ?, mobiel_nr = ?, vast_nr = ?, emailadres = ? WHERE persoon_nr = " + persoon_nr + ";";
         String query;
-        if (existsInDB()) {
-            query = update;
+        if (persoonExistsInDB()) {
+            query = "UPDATE persoon SET voornaam = ?, tussenvoegsel = ?, achternaam = ?, straat = ?, huisnummer = ?, postcode = ?, woonplaats = ?, mobiel_nr = ?, vast_nr = ?, emailadres = ? WHERE persoon_nr = " + persoon_nr + ";";
         } else {
-            query = insert;
+            query = "INSERT INTO persoon VALUES(" + persoon_nr + ",?,?,?,?,?,?,?,?,?,?);";
         }
+        
         try {
+            System.out.println(getPNR());
             PreparedStatement stat = FullHouseDatabase.getConnection().prepareStatement(query);
             stat.setString(1, voornaam);
             stat.setString(2, tussenvoegsel);
@@ -177,6 +184,22 @@ public class Persoon {
         }
         return true;
 
+    }
+    public void maakID()
+    {
+        try{
+        Connection conn= FullHouseDatabase.getConnection();
+        Statement stat= conn.createStatement();
+        String query= "Select max(persoon_nr) AS max from persoon";
+        ResultSet rs= stat.executeQuery(query);
+        rs.next();
+        persoon_nr= rs.getInt("max") + 1;
+        }
+        catch(SQLException e)
+        {
+            
+        }
+        
     }
 @Override
 public String toString(){

@@ -143,7 +143,7 @@ public class ToernooiTab extends javax.swing.JPanel {
             }
         });
 
-        jLabel8.setText("Datum");
+        jLabel8.setText("Datum (yyyy-mm-dd)");
 
         jLabel11.setText("Tijd");
 
@@ -200,10 +200,10 @@ public class ToernooiTab extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel8)
                             .addComponent(jLabel11)
                             .addComponent(jLabel13)
-                            .addComponent(jLabel12))
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );

@@ -59,8 +59,12 @@ public class Docent extends Persoon {
         return rekening_nr;
     }
     
-    @Override
+
     public boolean existsInDB(){
+        if(getPNR()==0)
+        {return false;
+                }
+        
         try{
             String query = " SELECT EXISTS(SELECT docent_nr FROM docent WHERE docent_nr = "+getPNR()+")AS exist;";
             ResultSet rs = FullHouseDatabase.getConnection().createStatement().executeQuery(query);
@@ -85,6 +89,7 @@ public class Docent extends Persoon {
                 query = insert;
             }
             try{
+                System.out.println(getPNR());
                 PreparedStatement stat = FullHouseDatabase.getConnection().prepareStatement(query);
                 stat.setString(1, rekening_nr);
                 stat.setInt(2, getPNR());
