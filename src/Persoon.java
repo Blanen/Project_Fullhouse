@@ -54,7 +54,6 @@ public class Persoon {
             ResultSet rs = stat.executeQuery(query);
 
             while (rs.next()) {
-
                 setNaam(rs.getString("voornaam"), rs.getString("tussenvoegsel"), rs.getString("achternaam"));
                 setAdres(rs.getString("straat"), rs.getString("huisnummer"), rs.getString("woonplaats"), rs.getString("postcode"));
                 setContactGegevens(rs.getString("mobiel_nr"), rs.getString("vast_nr"), rs.getString("emailadres"));

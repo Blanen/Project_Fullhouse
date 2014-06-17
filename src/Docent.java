@@ -59,7 +59,6 @@ public class Docent extends Persoon {
         return rekening_nr;
     }
     
-    @Override
     public boolean existsInDB(){
         try{
             String query = " SELECT EXISTS(SELECT docent_nr FROM docent WHERE docent_nr = "+getPNR()+")AS exist;";
