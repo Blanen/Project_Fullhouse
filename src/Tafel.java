@@ -44,7 +44,7 @@ public class Tafel {
             stat.setInt(3, toernooi.getEventNr());
             ResultSet result = stat.executeQuery();
             while (result.next()) {
-                spelers.add(new ToernooiInschrijving(result.getInt("speler"), toernooi.getEventNr()));
+                spelers.add(new ToernooiInschrijving(result.getInt("speler"), toernooi.getEventNr(), false));
             }
         } catch (SQLException e) {
             System.out.println(e);
