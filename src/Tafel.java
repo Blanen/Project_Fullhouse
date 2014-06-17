@@ -69,12 +69,12 @@ public class Tafel {
 
         if (existsInDB()) {
             for (ToernooiInschrijving inschrijving : spelers) {
-                writeIndelingToDB(inschrijving);
+                //writeIndelingToDB(inschrijving);
             }
         }
     }
 
-    private void writeIndelingToDB(ToernooiInschrijving inschrijving) {
+    /*private void writeIndelingToDB(ToernooiInschrijving inschrijving) {
         if (!indelingExistsInDB(inschrijving.getSpeler())) {
             try {
                 String insert = "INSERT INTO speler_indeling VALUES (?,?,?,?)";
@@ -88,7 +88,7 @@ public class Tafel {
                 System.out.println(e);
             }
         }
-    }
+    }*/
 
     public final boolean existsInDB() {
         String query = " SELECT EXISTS(SELECT * FROM tafel_indeling WHERE tafel_nr = " + tafelnummer + " AND ronde_nr =" + ronde + " AND toernooi = " + toernooi.getEventNr() + ")AS exist;";

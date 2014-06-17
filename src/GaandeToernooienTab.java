@@ -254,7 +254,24 @@ public class GaandeToernooienTab extends javax.swing.JPanel {
     private void startToernooiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startToernooiButtonActionPerformed
         
     }//GEN-LAST:event_startToernooiButtonActionPerformed
-
+    
+    private void getTafelsInRonde () {
+        DefaultComboBoxModel<Tafel> model = new DefaultComboBoxModel();
+        
+        try {
+            String query = "SELECT toernooi_nr FROM toernooi JOIN event ON toernooi_nr = event_nr"
+                            + " WHERE toernooi.eerste_plaats is null"
+                            + " AND NOT toernooi_nr IN (SELECT toernooi FROM tafel_indeling)"
+                            + " ORDER BY datum DESC;";
+            ResultSet result = FullHouseDatabase.getConnection().createStatement().executeQuery(query);
+            while (result.next()) {
+                //model.addElement(new Tafel(result.getInt("toernooi_nr")));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+    
     private void getGaandeToernooien () {
         DefaultComboBoxModel<Toernooi> model = new DefaultComboBoxModel();
         try {
