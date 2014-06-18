@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 
-
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -15,36 +13,34 @@ import java.sql.SQLException;
  * @author Babita
  */
 public class FullHouseDatabase {
-    private static final String dbserver="localhost";
-    private static final String database="fullhouse";
-    private static final String username="root";
-    private static final String password="root";
+
+    private static final String dbserver = "localhost";
+    private static final String database = "fullhouse";
+    private static final String username = "root";
+    private static final String password = "root";
     private static Connection activeConnection;
-    
-    
-    public static void init()
-    {
-        try{
-            String driver="com.mysql.jdbc.Driver";
+
+    public static void init() {
+        try {
+            String driver = "com.mysql.jdbc.Driver";
             Class.forName(driver);
-        }
-        catch(ClassNotFoundException e)
-        {
+        } catch (ClassNotFoundException e) {
             System.out.println(e);
         }
-        
-        
+
     }
-    public static Connection getConnection() throws SQLException
-    {
+
+    public static Connection getConnection() throws SQLException {
         init();
-        activeConnection=createConnection();
+        if (activeConnection == null) {
+            activeConnection = createConnection();
+        }
         return activeConnection;
     }
-    private static Connection createConnection() throws SQLException
-    {
-        String connectionString="jdbc:mysql://" + dbserver + "/" + database + "?user=" + username + "&password=" + password;
-       
+
+    private static Connection createConnection() throws SQLException {
+        String connectionString = "jdbc:mysql://" + dbserver + "/" + database + "?user=" + username + "&password=" + password;
+
         return DriverManager.getConnection(connectionString);
     }
 }

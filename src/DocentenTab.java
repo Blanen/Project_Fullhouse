@@ -412,6 +412,10 @@ public class DocentenTab extends javax.swing.JPanel {
         }
         lijstDocenten.setModel(dml);
     }
+    
+    public void refresh(){
+        fillSelecteerDocentList();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField docentAchternaamField;

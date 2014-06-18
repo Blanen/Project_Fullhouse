@@ -20,6 +20,7 @@ public class Toernooi extends Event {
 
     private int tafelGrootte;
     private int huidigeRonde;
+    private int aantalInschrijvingen;
     private Random randomGenerator = new Random();
     private ArrayList<Tafel> tafels = new ArrayList();
     private ArrayList<ToernooiInschrijving> inschrijvingen = new ArrayList();
@@ -27,18 +28,20 @@ public class Toernooi extends Event {
     public Toernooi(String plaats, Date datum, String tijd, double inschrijfGeld, int max_inschrijvingen, int tafelGrootte) {
         super(plaats, datum, tijd, inschrijfGeld, max_inschrijvingen);
         this.tafelGrootte = tafelGrootte;
+        this.aantalInschrijvingen = 0;
     }
 
     public Toernooi(int toernooi_nr) {
         super(toernooi_nr);
-        String query = "SELECT * FROM toernooi WHERE toernooi_nr = " + toernooi_nr + ";";
+        String query = "SELECT toernooi.tafelgrootte, COUNT(toernooi) FROM toernooi INNER JOIN toernooi_inschrijving ON toernooi_nr = toernooi WHERE toernooi_nr = " + toernooi_nr + ";";
         
         try {
             Connection conn = FullHouseDatabase.getConnection();
             Statement stat = conn.createStatement();
             ResultSet result = stat.executeQuery(query);
             result.next();
-            tafelGrootte = result.getInt("tafelgrootte");
+            tafelGrootte = result.getInt("toernooi.tafelgrootte");
+            aantalInschrijvingen = result.getInt("count(toernooi)");
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -111,6 +114,10 @@ public class Toernooi extends Event {
             System.out.println(e);
         }
         tafels.get(randomGenerator.nextInt(tafels.size())).addInschrijving(speler);
+    }
+    
+    public void inschrijvingAdded(){
+        aantalInschrijvingen++;
     }
     
     @Override
@@ -206,4 +213,9 @@ public class Toernooi extends Event {
         inschrijvingen = inschr;
     }
     
+    @Override
+    public String toString(){
+        
+        return super.toString() + " ("+aantalInschrijvingen+"/"+getMax_inschrijvingen()+")";
+    }
 }

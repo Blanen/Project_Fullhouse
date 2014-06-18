@@ -402,6 +402,10 @@ public class MasterClassTab extends javax.swing.JPanel {
         }
         selecteerDocentList.setModel(dml);
     }
+    
+    public void refresh(){
+        getMasterClassList();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

@@ -398,6 +398,10 @@ public class ToernooiTab extends javax.swing.JPanel {
         }
         toernooiList.setModel(model);
     }
+    
+    public void refresh(){
+        getToernooiList();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame inschrijvingToernooiFrame;
