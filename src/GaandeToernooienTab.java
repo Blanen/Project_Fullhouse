@@ -33,6 +33,7 @@ public class GaandeToernooienTab extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         deelnemendeSpelersList = new javax.swing.JList();
         jLabel1 = new javax.swing.JLabel();
@@ -61,6 +62,15 @@ public class GaandeToernooienTab extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         huidigeRondeLabel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jButton5 = new javax.swing.JButton();
+
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton4.setText("?");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         deelnemendeSpelersList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -124,6 +134,14 @@ public class GaandeToernooienTab extends javax.swing.JPanel {
 
         huidigeRondeLabel.setText("Geen toernooi geselecteerd");
 
+        jButton5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton5.setText("?");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,8 +180,9 @@ public class GaandeToernooienTab extends javax.swing.JPanel {
                                             .addComponent(eerstePlaatsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addComponent(bevestigTafelWinnaarButton)
                                     .addComponent(bevestigWinnaarsToernooiButton))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(37, 37, 37))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(gaandeToernooienComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,7 +203,7 @@ public class GaandeToernooienTab extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(huidigeRondeLabel)
                                     .addComponent(jLabel13))
-                                .addGap(0, 102, Short.MAX_VALUE))))))
+                                .addGap(0, 239, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,7 +264,9 @@ public class GaandeToernooienTab extends javax.swing.JPanel {
                             .addComponent(jLabel12)
                             .addComponent(derdePlaatsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bevestigWinnaarsToernooiButton)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bevestigWinnaarsToernooiButton)
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -254,6 +275,14 @@ public class GaandeToernooienTab extends javax.swing.JPanel {
     private void startToernooiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startToernooiButtonActionPerformed
         
     }//GEN-LAST:event_startToernooiButtonActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        helpSpeler();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void getGaandeToernooien () {
         DefaultComboBoxModel<Toernooi> model = new DefaultComboBoxModel();
@@ -303,6 +332,8 @@ public class GaandeToernooienTab extends javax.swing.JPanel {
     private javax.swing.JComboBox gaandeToernooienComboBox;
     private javax.swing.JLabel geselecteerdToernooiLabel;
     private javax.swing.JLabel huidigeRondeLabel;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
