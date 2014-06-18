@@ -143,7 +143,7 @@ public class ToernooiTab extends javax.swing.JPanel {
             }
         });
 
-        jLabel8.setText("Datum");
+        jLabel8.setText("Datum (yyyy-mm-dd)");
 
         jLabel11.setText("Tijd");
 

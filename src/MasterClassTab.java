@@ -103,7 +103,7 @@ public class MasterClassTab extends javax.swing.JPanel {
             }
         });
 
-        jLabel28.setText("Datum");
+        jLabel28.setText("Datum (yyyy-mm-dd)");
 
         masterclassList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

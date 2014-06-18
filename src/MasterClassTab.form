@@ -204,7 +204,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel28">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Datum"/>
+        <Property name="text" type="java.lang.String" value="Datum (yyyy-mm-dd)"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane5">
