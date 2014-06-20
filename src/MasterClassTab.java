@@ -3,6 +3,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -38,8 +39,6 @@ public class MasterClassTab extends javax.swing.JPanel {
         jScrollPane8 = new javax.swing.JScrollPane();
         selecteerDocentList = new javax.swing.JList();
         masterclassDocentWasSelectedButton = new javax.swing.JButton();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        masterclassList = new javax.swing.JList();
         toernooiInschrijvingenButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         masterclassPlaatsField = new javax.swing.JTextField();
@@ -55,11 +54,12 @@ public class MasterClassTab extends javax.swing.JPanel {
         jLabel32 = new javax.swing.JLabel();
         masterclassDocentField = new javax.swing.JTextField();
         masterclassDocentButton = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
         masterclassWijzigButton = new javax.swing.JButton();
         masterclassToevoegButton = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        masterclassList = new javax.swing.JList();
 
         jScrollPane8.setViewportView(selecteerDocentList);
 
@@ -92,13 +92,6 @@ public class MasterClassTab extends javax.swing.JPanel {
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE))
                 .addContainerGap())
         );
-
-        masterclassList.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                masterclassListMouseClicked(evt);
-            }
-        });
-        jScrollPane5.setViewportView(masterclassList);
 
         toernooiInschrijvingenButton1.setText("Lijst met spelers en hun inschrijfstatus");
         toernooiInschrijvingenButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -134,6 +127,20 @@ public class MasterClassTab extends javax.swing.JPanel {
             }
         });
 
+        masterclassWijzigButton.setText("Wijzig");
+        masterclassWijzigButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                masterclassWijzigButtonActionPerformed(evt);
+            }
+        });
+
+        masterclassToevoegButton.setText("Voeg toe");
+        masterclassToevoegButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                masterclassToevoegButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -153,22 +160,25 @@ public class MasterClassTab extends javax.swing.JPanel {
                     .addComponent(jLabel31)
                     .addComponent(jLabel32)
                     .addComponent(masterclassDocentButton))
-                .addGap(0, 457, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(masterclassWijzigButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 436, Short.MAX_VALUE)
+                .addComponent(masterclassToevoegButton))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(masterclassPlaatsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel28)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(masterclassDatumField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel29)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(masterclassTijdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel30)
@@ -184,39 +194,10 @@ public class MasterClassTab extends javax.swing.JPanel {
                 .addComponent(masterclassDocentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(masterclassDocentButton)
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
-
-        masterclassWijzigButton.setText("Wijzig");
-        masterclassWijzigButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                masterclassWijzigButtonActionPerformed(evt);
-            }
-        });
-
-        masterclassToevoegButton.setText("Voeg toe");
-        masterclassToevoegButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                masterclassToevoegButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(masterclassWijzigButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(masterclassToevoegButton))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 34, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(masterclassWijzigButton)
-                    .addComponent(masterclassToevoegButton))
-                .addGap(0, 77, Short.MAX_VALUE))
+                    .addComponent(masterclassToevoegButton)))
         );
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -227,55 +208,51 @@ public class MasterClassTab extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 15, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        masterclassList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                masterclassListMouseClicked(evt);
+            }
+        });
+        masterclassList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                masterclassListValueChanged(evt);
+            }
+        });
+        jScrollPane5.setViewportView(masterclassList);
+
+        jScrollPane2.setViewportView(jScrollPane5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(toernooiInschrijvingenButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(toernooiInschrijvingenButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(116, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jScrollPane5))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                        .addComponent(toernooiInschrijvingenButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(toernooiInschrijvingenButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 48, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -284,17 +261,18 @@ public class MasterClassTab extends javax.swing.JPanel {
     }//GEN-LAST:event_masterclassPlaatsFieldActionPerformed
 
     private void masterclassListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masterclassListMouseClicked
-        if (masterclassList.getSelectedValue() != null) {
-            fillMasterClassFields((MasterClass) masterclassList.getSelectedValue());
-        }
+        
     }//GEN-LAST:event_masterclassListMouseClicked
 
     private void masterclassToevoegButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masterclassToevoegButtonActionPerformed
+       if(masterclassList.getSelectedIndex()==0)
+       {
         MasterClass masterclass = maakMasterClass();
         if (masterclass != null) {
             masterclass.writeToDB();
             ((DefaultListModel) masterclassList.getModel()).addElement(masterclass);
         }
+       }
     }//GEN-LAST:event_masterclassToevoegButtonActionPerformed
 
     private void toernooiInschrijvingenButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toernooiInschrijvingenButton1ActionPerformed
@@ -323,9 +301,31 @@ public class MasterClassTab extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         helpMasterclass();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void masterclassListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_masterclassListValueChanged
+       if (masterclassList.getSelectedValue() != null && masterclassList.getSelectedIndex()>0) {
+            fillMasterClassFields((MasterClass) masterclassList.getSelectedValue());
+            masterclassToevoegButton.setEnabled(false);
+            masterclassWijzigButton.setEnabled(true);
+        }
+       else if(masterclassList.getSelectedIndex()==0)
+       {
+        masterclassToevoegButton.setEnabled(true);
+        masterclassWijzigButton.setEnabled(false);
+        masterclassPlaatsField.setText(null);
+        masterclassDatumField.setText(null);
+        masterclassInschrijfgeldField.setText(null);
+        masterclassTijdField.setText(null);
+        masterclassMinRatingField.setText(null);
+        masterclassDocentField.setText(null);    
+       }
+    }//GEN-LAST:event_masterclassListValueChanged
     private void helpMasterclass()
     {
-        
+    JOptionPane.showMessageDialog(this, "Wijzigen-\t Selecteer een speler uit de lijst en klik op 'Wijzigen' om een speler te wijzigen"
+             + "\nToevoegen-\t Klik op --Nieuw Masterclass-- en op de knop 'Toevoegen' om een nieuw masterclass toe te voegen"
+             + "\nInschrijfstatus ophalen- Klik op 'Lijst met spelers en inschrijfstatus' om betaalde en onbetaalde inschrijvingen te zien"
+             , "Help", JOptionPane.QUESTION_MESSAGE );    
     }
     private MasterClass maakMasterClass() {
         String plaats = masterclassPlaatsField.getText();
@@ -424,7 +424,8 @@ public class MasterClassTab extends javax.swing.JPanel {
     }
     
     private void getMasterClassList() {
-        DefaultListModel<MasterClass> model = new DefaultListModel();
+        DefaultListModel model = new DefaultListModel();
+        model.addElement("--Nieuw Masterclass--");
         try {
 
             String query = "SELECT masterclass_nr FROM masterclass JOIN event on masterclass_nr = event_nr ORDER BY datum DESC; ";
@@ -447,8 +448,7 @@ public class MasterClassTab extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTextField masterclassDatumField;

@@ -38,8 +38,6 @@ public class ToernooiTab extends javax.swing.JPanel {
         jLabel22 = new javax.swing.JLabel();
         totaaInschrijvingenlField = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        toernooiList = new javax.swing.JList();
         toernooiInschrijvingenButton = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -55,6 +53,9 @@ public class ToernooiTab extends javax.swing.JPanel {
         toernooiRondesField = new javax.swing.JTextField();
         toernooiWijzigButton = new javax.swing.JButton();
         toernooiToevoegButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        toernooiList = new javax.swing.JList();
 
         toernooiInschrijvingTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -121,18 +122,6 @@ public class ToernooiTab extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        toernooiList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "--Nieuw toernooi--", "1-1-2001", "2-2-2002" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        toernooiList.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                toernooiListMouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(toernooiList);
-
         toernooiInschrijvingenButton.setText("Lijst met spelers en hun inschrijfstatus");
         toernooiInschrijvingenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,17 +186,17 @@ public class ToernooiTab extends javax.swing.JPanel {
                     .addComponent(toernooiInschrijfgeldField)
                     .addComponent(toernooiRondesField)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(toernooiWijzigButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 436, Short.MAX_VALUE)
-                        .addComponent(toernooiToevoegButton)))
+                        .addComponent(toernooiToevoegButton))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -239,45 +228,52 @@ public class ToernooiTab extends javax.swing.JPanel {
                     .addComponent(toernooiToevoegButton)))
         );
 
+        toernooiList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "--Nieuw toernooi--", "1-1-2001", "2-2-2002" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        toernooiList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                toernooiListValueChanged(evt);
+            }
+        });
+        jScrollPane2.setViewportView(toernooiList);
+
+        jScrollPane1.setViewportView(jScrollPane2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(toernooiInschrijvingenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(toernooiInschrijvingenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(152, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(toernooiInschrijvingenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(117, 117, 117)
+                        .addComponent(toernooiInschrijvingenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void toernooiListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toernooiListMouseClicked
-        if (toernooiList.getSelectedValue() != null) {
-            fillToernooiFields((Toernooi) toernooiList.getSelectedValue());
-        }
-    }//GEN-LAST:event_toernooiListMouseClicked
 
     private void toernooiPlaatsFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toernooiPlaatsFieldActionPerformed
 
@@ -315,9 +311,29 @@ public class ToernooiTab extends javax.swing.JPanel {
     }//GEN-LAST:event_toernooiInschrijfgeldFieldActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        helpSpeler();
+        helpToernooi();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void toernooiListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_toernooiListValueChanged
+        if (toernooiList.getSelectedValue() != null && toernooiList.getSelectedIndex()>0) {
+            fillToernooiFields((Toernooi) toernooiList.getSelectedValue());
+        }
+        else if(toernooiList.getSelectedIndex()==0)
+        {
+        toernooiPlaatsField.setText(null);
+        toernooiDatumField.setText(null);
+        toernooiInschrijfgeldField.setText(null);
+        toernooiTijdField.setText(null);
+        toernooiRondesField.setText(null);    
+        }
+    }//GEN-LAST:event_toernooiListValueChanged
+    private void helpToernooi()
+    {
+        JOptionPane.showMessageDialog(this, "Wijzigen-\t Selecteer een toernooi uit de lijst en klik op 'Wijzigen' om een toernooi te wijzigen"
+             + "\nToevoegen-\t Klik op --Nieuw Toernooi-- en op de knop 'Toevoegen' om een nieuw toernooi toe te voegen"
+             + "\nInschrijfstatus ophalen- Klik op 'Lijst met spelers en inschrijfstatus' om betaalde en onbetaalde inschrijvingen te zien"
+             , "Help", JOptionPane.QUESTION_MESSAGE );
+    }
     private void fillToernooiFields(Toernooi toernooi) {
         toernooiPlaatsField.setText(toernooi.getPlaats());
         toernooiDatumField.setText(toernooi.getDatum().toString());
@@ -419,7 +435,8 @@ public class ToernooiTab extends javax.swing.JPanel {
     }
     
     private void getToernooiList() {
-        DefaultListModel<Toernooi> model = new DefaultListModel();
+        DefaultListModel model = new DefaultListModel();
+        model.addElement("--Nieuw Toernooi--");
         try {
 
             String query = "SELECT toernooi_nr FROM toernooi JOIN event on toernooi_nr = event_nr ORDER BY datum DESC; ";
@@ -445,6 +462,7 @@ public class ToernooiTab extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JToggleButton jToggleButton1;
