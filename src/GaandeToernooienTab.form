@@ -250,6 +250,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Selecteer toernooi"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecteerToeernooiButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -287,6 +290,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="selecteerTafelComboBoxItemStateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="selecteerTafelWinnaarComboBox">
       <Properties>
@@ -299,6 +305,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="selecteerTafelWinnaarComboBoxItemStateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
@@ -331,6 +340,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="eerstePlaatsComboBoxItemStateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="tweedePlaatsComboBox">
       <Properties>
@@ -343,6 +355,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="tweedePlaatsComboBoxItemStateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="derdePlaatsComboBox">
       <Properties>
@@ -355,16 +370,25 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="derdePlaatsComboBoxItemStateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bevestigTafelWinnaarButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Bevestig"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bevestigTafelWinnaarButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bevestigWinnaarsToernooiButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Bevestig"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bevestigWinnaarsToernooiButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel13">
       <Properties>

@@ -52,35 +52,36 @@ public class Toernooi extends Event {
     }
     
     public void maakTafels(){
-        ArrayList<Tafel> tafels = new ArrayList();
         int aantalSpelers = inschrijvingen.size();
-        int minAantalTafels = aantalSpelers/tafelGrootte;
+        int minAantalTafels = (int) Math.ceil((double)aantalSpelers / (double)tafelGrootte);
         int aantalRondes = 0;
         double tafelAmount = minAantalTafels;
+        if(tafelAmount == 1) {
+            aantalRondes++;
+        }
         while(tafelAmount > 1){
             tafelAmount = tafelAmount/tafelGrootte;
             aantalRondes++;
         }
+        
         for(int i = 1; i<=aantalRondes; i++){
             for(int x = 0; x < Math.pow(tafelGrootte, aantalRondes - i); x++){
                 tafels.add(new Tafel(this, x, i));
             }
         }
-        for(Tafel tafel : tafels){
-            tafel.writeToDB();
-        }
+        
     }
     
     public void maakIndeling(){
         ArrayList<ToernooiInschrijving> inschrijvingen = this.inschrijvingen;
-        /*try {
-            String query = "SELECT MAX(rondenummer) FROM tafel_indeling WHERE toernooi = toernooi.getEvent_nr;";
+        try {
+            String query = "SELECT MAX(ronde_nr) FROM tafel_indeling WHERE toernooi = " + this.getEvent_nr();;
             ResultSet result = FullHouseDatabase.getConnection().createStatement().executeQuery(query);
             result.next();
-            huidigeRonde = 1 + result.getInt("rondenummer");
+            huidigeRonde = 1 + result.getInt("MAX(ronde_nr)");
         } catch (SQLException e) {
             System.out.println(e);
-        }*/
+        }
         
 	while(inschrijvingen.size()>0){
 		for(Tafel tafel : tafels){
@@ -89,7 +90,6 @@ public class Toernooi extends Event {
 			inschrijvingen.remove(speler);
 		}
 	}
-
 	for(Tafel tafel : tafels){
 		tafel.writeToDB();
 	}
@@ -162,7 +162,23 @@ public class Toernooi extends Event {
             System.out.println(e);
         }
     }
-
+    
+    /**
+     * @return the huidigeRonde
+     */
+    public int getHuidigeRonde() {
+        String query = "SELECT MAX(ronde_nr) FROM tafel_indeling WHERE toernooi = " + this.getEventNr();
+        try {
+            ResultSet result = FullHouseDatabase.getConnection().createStatement().executeQuery(query);
+            result.next();
+            huidigeRonde = result.getInt("MAX(ronde_nr)");
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        
+        return huidigeRonde;
+    }
+    
     /**
      * @return the tafelGrootte
      */
@@ -181,8 +197,19 @@ public class Toernooi extends Event {
      * @return the tafels
      */
     public ArrayList<Tafel> getHuidigeRondeTafels() {
-        System.out.println("getHuidigeRondeTafels not yet implemented!");
-        return null;
+        ArrayList<Tafel> huidigeRondeTafels = new ArrayList();
+        try {
+            String query = "SELECT MAX(ronde_nr), tafel_nr FROM tafel_indeling"
+                            + " WHERE toernooi = " + this.getEvent_nr();
+            ResultSet result = FullHouseDatabase.getConnection().createStatement().executeQuery(query);
+            while (result.next()) {
+                huidigeRondeTafels.add(new Tafel(this, result.getInt("tafel_nr"), result.getInt("MAX(ronde_nr)")));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        
+        return huidigeRondeTafels;
     }
 
     /**
@@ -190,6 +217,15 @@ public class Toernooi extends Event {
      */
     public ArrayList<ToernooiInschrijving> getInschrijvingen() {
         return inschrijvingen;
+    }
+    
+    public void setWinnaars (Speler eerste, Speler tweede, Speler derde) {
+        String update = "UPDATE toernooi SET eerste_plaats = " + eerste.getPNR() + ", tweede_plaats = " + tweede.getPNR() + ", derde_plaats = " + derde.getPNR();
+        try {
+            FullHouseDatabase.getConnection().createStatement().executeUpdate(update);
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 
     public void initInschrijvingen(){

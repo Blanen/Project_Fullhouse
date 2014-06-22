@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="Inf-B_ProjectFullHouse">
-            <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/ToernooiTab.java</file>
-            <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/Toernooi.java</file>
-            <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/Tafel.java</file>
-            <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/GaandeToernooienTab.java</file>
-            <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/FullHouseDatabase.java</file>
-            <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/GUI.java</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/Startklaar/Documents/BlokB/regiBranch/src/Tafel.java</file>
-            <file>file:/C:/Users/Startklaar/Documents/BlokB/regiBranch/src/Toernooi.java</file>
-            <file>file:/C:/Users/Startklaar/Documents/BlokB/regiBranch/src/GaandeToernooienTab.java</file>
-        </group>
-    </open-files>
-</project-private>
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -26,12 +5,13 @@
         <group name="Inf-B_ProjectFullHouse">
             <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/ToernooiInschrijving.java</file>
             <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/ToernooiTab.java</file>
-            <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/Toernooi.java</file>
+            <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/Inschrijving.java</file>
             <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/Tafel.java</file>
+            <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/Toernooi.java</file>
             <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/GaandeToernooienTab.java</file>
+            <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/Speler.java</file>
             <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/FullHouseDatabase.java</file>
             <file>file:/C:/Users/Matthias/Documents/FullHouseProject/FullHouseProject/src/GUI.java</file>
         </group>
     </open-files>
 </project-private>
->>>>>>> Matthias
